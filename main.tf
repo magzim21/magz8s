@@ -1,3 +1,8 @@
+provider "kubernetes" {
+  host                   = module.eks.cluster_endpoint
+  cluster_ca_certificate = base64decode(module.eks.cluster_certificate_authority_data)
+}
+
 module "eks" {
   source  = "terraform-aws-modules/eks/aws"
   version = "18.23.0"
