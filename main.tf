@@ -99,19 +99,22 @@ module "eks" {
   #   }
   # }
 
-  create_aws_auth_configmap = true
+  create_aws_auth_configmap = true # non-default and very important
   # aws-auth configmap
   manage_aws_auth_configmap = true
 
+# create_aws_auth_configmap = true
+# manage_aws_auth_configmap = true
+
   aws_auth_roles = [
     {
-      rolearn  = "arn:aws:iam::249446252531:instance-profile/Admin"
+      rolearn  = "arn:aws:iam::249446252531:role/Admin"
       username = "mapped-admin"
       groups   = ["system:masters"]
     },
   ]
 
-  # aws_auth_users = var.map_users
+  aws_auth_users = var.map_users
 
   # aws_auth_accounts = [
   #   "777777777777",
