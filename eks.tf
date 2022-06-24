@@ -129,3 +129,16 @@ module "eks" {
 
   # tags = var.tags # Using default tags
 }
+resource "null_resource" "kubeconfig" {
+  triggers = {
+    always_run = "${timestamp()}"
+  }
+
+  provisioner "local-exec" {
+    
+    command = "aws eks --region ${data.aws_region.current.id} update-kubeconfig --name ${var.tags.project} 	--kubeconfig ${path.root}/kubeconfig-${var.tags.project}"
+    # interpreter = ["bash", "-c"]
+  }
+}
+
+
