@@ -6,6 +6,7 @@ tags = {
 }
 
 
+# This is an additional user. Cluster cratetor can always accees it.
 map_users = [
   {
     userarn  = "arn:aws:iam::249446252531:user/non-root"

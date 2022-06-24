@@ -9,7 +9,7 @@ terraform {
     backend "s3" {
     bucket = "terraform-s3-backend-with-locking-magzim"
     key    = "magz8s"
-    region = "us-west-1"
+    region = "us-west-1" # change to ca-central-1
   }
 
 }
