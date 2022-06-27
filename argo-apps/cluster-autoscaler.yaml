@@ -1,0 +1,34 @@
+# helm install autoscaler autoscaler/cluster-autoscaler --set autoDiscovery.clusterName=eksdemo1 --set awsRegion=ca-central-1 --set cloudProvider=aws --version 9.10.7
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: prometheus
+  namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-wave: "1"
+spec:
+  project: default
+  source:
+    chart: autoscaler
+    repoURL: https://kubernetes.github.io/autoscaler
+    targetRevision: 9.19.2
+    helm:
+      releaseName: cluster-autoscaler
+      # parameters:
+      #   - name: ''
+      #     value: ''
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: prometheus
+  syncPolicy:
+    automated:
+      # not default. 
+      # prune: false
+      # not default
+      allowEmpty: true
+      # not default. enable automatic sync when the live cluster's state deviates from the state defined in Git. Default interval 5 secs.
+      # selfHeal: true
+    syncOptions:
+      # - ApplyOutOfSyncOnly=true
+      - CreateNamespace=true
