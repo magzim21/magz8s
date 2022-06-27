@@ -1,0 +1,31 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: root-application
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: default
+  source:
+  # todo make repoURL of ArgoCD dynamic 
+    repoURL: 'https://github.com/magzim21/magz8s.git'
+    path: apps
+    targetRevision: HEAD
+    # directory:
+    #   recurse: false
+    #   jsonnet: {}
+  destination:
+    server: 'https://kubernetes.default.svc'
+  syncPolicy:
+    automated:
+      # not default. 
+      prune: true
+      # not default
+      allowEmpty: true
+      # not default. enable automatic sync when the live cluster's state deviates from the state defined in Git. Default interval 5 secs.
+      # selfHeal: true
+    syncOptions:
+      # - ApplyOutOfSyncOnly=true
+      - CreateNamespace=true
+

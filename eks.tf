@@ -1,3 +1,6 @@
+locals {
+  kubeconfig_path = "${path.root}/kubeconfig-${var.tags.project}"
+}
 provider "kubernetes" {
   host                   = module.eks.cluster_endpoint
   cluster_ca_certificate = base64decode(module.eks.cluster_certificate_authority_data)
@@ -143,12 +146,26 @@ resource "null_resource" "kubeconfig" {
   triggers = {
     always_run = "${timestamp()}"
   }
-
   provisioner "local-exec" {
     
-    command = "aws eks --region ${data.aws_region.current.id} update-kubeconfig --name ${var.tags.project} 	--kubeconfig ${path.root}/kubeconfig-${var.tags.project}"
+    command = "sleep 30; aws eks --region ${data.aws_region.current.id} update-kubeconfig --name ${var.tags.project} 	--kubeconfig ${local.kubeconfig_path}"
     # interpreter = ["bash", "-c"]
   }
+  provisioner "local-exec" {
+    
+    # todo pin  argocd version
+    command = <<COMMAND
+    kubectl create namespace argocd; 
+        kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml ; 
+        sleep 60; 
+        kubectl apply -f ${path.root}/root-application.yaml;
+COMMAND
+    environment ={
+        "KUBECONFIG": "${local.kubeconfig_path}"
+      }
+  }
+
 }
 
+# Todo output argocd 
 
