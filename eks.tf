@@ -34,8 +34,8 @@ module "eks" {
   #   resources        = ["secrets"]
   # }]
 
-  vpc_id     = aws_default_vpc.default.id
-  subnet_ids = data.aws_subnets.default.ids
+  vpc_id     = module.vpc.vpc_id
+  subnet_ids = concat(module.vpc.public_subnets , module.vpc.private_subnets )
 
   # # Self Managed Node Group(s)
   # self_managed_node_group_defaults = {
@@ -81,8 +81,7 @@ module "eks" {
   # }
 
   eks_managed_node_groups = {
-    blue = {}
-    green = {
+    private = {
       min_size     = 2
       max_size     = 10
       desired_size = 2
@@ -90,6 +89,17 @@ module "eks" {
       instance_types = ["t3.medium"]
       capacity_type  = "ON_DEMAND"
       disk_size = "30"
+      subnet_ids = module.vpc.private_subnets
+    }
+    public = {
+      min_size     = 2
+      max_size     = 10
+      desired_size = 2
+
+      instance_types = ["t3.medium"]
+      capacity_type  = "ON_DEMAND"
+      disk_size = "30"
+      subnet_ids = module.vpc.public_subnets
     }
   }
 
