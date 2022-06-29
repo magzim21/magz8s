@@ -8,18 +8,18 @@ metadata:
 spec:
   project: default
   source:
-  # todo make repoURL of ArgoCD dynamic 
-    repoURL: 'https://github.com/magzim21/magz8s.git'
-    path: apps
+    # todo make repoURL of ArgoCD dynamic
+    repoURL: "https://github.com/magzim21/magz8s.git"
+    path: argo-apps
     targetRevision: HEAD
     # directory:
     #   recurse: false
     #   jsonnet: {}
   destination:
-    server: 'https://kubernetes.default.svc'
+    server: "https://kubernetes.default.svc"
   syncPolicy:
     automated:
-      # not default. 
+      # not default.
       prune: true
       # not default
       allowEmpty: true
@@ -28,4 +28,3 @@ spec:
     syncOptions:
       # - ApplyOutOfSyncOnly=true
       - CreateNamespace=true
-

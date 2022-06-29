@@ -3,7 +3,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: prometheus
+  name: cluster-autoscaler
   namespace: argocd
   annotations:
     argocd.argoproj.io/sync-wave: "1"
@@ -20,7 +20,7 @@ spec:
       #     value: ''
   destination:
     server: https://kubernetes.default.svc
-    namespace: prometheus
+    namespace: cluster-autoscaler
   syncPolicy:
     automated:
       # not default. 
