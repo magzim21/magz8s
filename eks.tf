@@ -38,7 +38,7 @@ module "eks" {
   # }]
 
   vpc_id     = module.vpc.vpc_id
-  subnet_ids = concat(module.vpc.public_subnets , module.vpc.private_subnets )
+  subnet_ids = concat(module.vpc.public_subnets, module.vpc.private_subnets)
 
   # # Self Managed Node Group(s)
   # self_managed_node_group_defaults = {
@@ -91,8 +91,8 @@ module "eks" {
 
       instance_types = ["t3.medium"]
       capacity_type  = "ON_DEMAND"
-      disk_size = "30"
-      subnet_ids = module.vpc.private_subnets
+      disk_size      = "30"
+      subnet_ids     = module.vpc.private_subnets
     }
     public = {
       min_size     = 2
@@ -101,8 +101,53 @@ module "eks" {
 
       instance_types = ["t3.medium"]
       capacity_type  = "ON_DEMAND"
-      disk_size = "30"
-      subnet_ids = module.vpc.public_subnets
+      disk_size      = "30"
+      subnet_ids     = module.vpc.public_subnets
+    }
+  }
+
+  # create_node_security_group
+  # create_cluster_security_group = false
+  node_security_group_additional_rules = {
+    ingress_nodeport_range_tcp = {
+      description = "EKS node port default range tcp"
+      protocol    = "tcp"
+      from_port   = 30000
+      to_port     = 32767
+      type        = "ingress"
+      self        = true
+    }
+    ingress_nodeport_range_udp = {
+      description = "EKS node port default range udp"
+      protocol    = "udp"
+      from_port   = 30000
+      to_port     = 32767
+      type        = "ingress"
+      self        = true
+    }
+    egress_nodeport_range_tcp = {
+      description = "EKS node port default range tcp"
+      protocol    = "tcp"
+      from_port   = 30000
+      to_port     = 32767
+      type        = "egress"
+      self        = true
+    }
+    egress_nodeport_range_udp = {
+      description = "EKS node port default range udp"
+      protocol    = "udp"
+      from_port   = 30000
+      to_port     = 32767
+      type        = "egress"
+      self        = true
+    }
+    egress_allow_all_tcp = {
+      description = "EKS node port default range tcp"
+      protocol    = "all"
+      from_port   = 0
+      to_port     = 0
+      type        = "egress"
+      cidr_blocks = ["0.0.0.0/0"]
     }
   }
 
@@ -122,8 +167,8 @@ module "eks" {
   # aws-auth configmap
   manage_aws_auth_configmap = true
 
-# create_aws_auth_configmap = true
-# manage_aws_auth_configmap = true
+  # create_aws_auth_configmap = true
+  # manage_aws_auth_configmap = true
 
   aws_auth_roles = [
     {
@@ -147,22 +192,22 @@ resource "null_resource" "kubeconfig" {
     always_run = "${timestamp()}"
   }
   provisioner "local-exec" {
-    
-    command = "sleep 30; aws eks --region ${data.aws_region.current.id} update-kubeconfig --name ${var.tags.project} 	--kubeconfig ${local.kubeconfig_path}"
+
+    command = " aws eks --region ${data.aws_region.current.id} update-kubeconfig --name ${var.tags.project} 	--kubeconfig ${local.kubeconfig_path}"
     # interpreter = ["bash", "-c"]
   }
   provisioner "local-exec" {
-    
+
     # todo pin  argocd version
     command = <<COMMAND
     kubectl create namespace argocd; 
         kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml ; 
-        sleep 60; 
+        # sleep 100; 
         kubectl apply -f ${path.root}/root-application.yaml;
 COMMAND
-    environment ={
-        "KUBECONFIG": "${local.kubeconfig_path}"
-      }
+    environment = {
+      "KUBECONFIG" : "${local.kubeconfig_path}"
+    }
   }
 
 }
