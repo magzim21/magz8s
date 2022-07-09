@@ -10,20 +10,59 @@ metadata:
 spec:
   project: default
   source:
-    chart: autoscaler
+    chart: cluster-autoscaler
     repoURL: https://kubernetes.github.io/autoscaler
-    targetRevision: 9.19.2
+    targetRevision: 9.10.7
     helm:
       releaseName: cluster-autoscaler
-      # parameters:
-      #   - name: ''
-      #     value: ''
+      parameters:
+        # todo de-hardcode
+        - name: "autoDiscovery.clusterName"
+          value: "magz8s"
+        - name: "awsRegion"
+          value: "ca-central-1"
+        - name: "cloudProvider"
+          value: "aws"
+        - name: 'rbac.serviceAccount.annotations.eks\.amazonaws\.com/role-arn'
+          value: "arn:aws:iam::249446252531:role/cluster_autoscaler"
+        # - --set rbac.serviceAccount.annotations."eks\.amazonaws\.com/role-arn"=arn:aws:iam::123456789012:role/MyRoleName
+        - name: "extraArgs.v"
+          value: "2"
+        - name: "extraArgs.stderrthreshold"
+          value: "error"
+        - name: "extraArgs.logtostderr"
+          value: "true"
+        - name: "extraArgs.write-status-configmap"
+          value: "true"
+        - name: "extraArgs.max-node-provision-time"
+          value: "20m0s"
+        - name: "extraArgs.scan-interval"
+          value: "30s"
+        - name: "extraArgs.scale-down-enabled"
+          value: "true"
+        - name: "extraArgs.scale-down-delay-after-add"
+          value: "20m"
+        - name: "extraArgs.scale-down-utilization-threshold"
+          value: "0.4"
+        - name: "extraArgs.max-graceful-termination-sec"
+          value: "600"
+        - name: "extraArgs.skip-nodes-with-system-pods"
+          value: "true"
+        - name: "extraArgs.skip-nodes-with-local-storage"
+          value: "false"
+        - name: "serviceMonitor.enabled"
+          value: "false"
+        - name: "serviceMonitor.namespace"
+          value: "kube-system"
+        - name: "serviceMonitor.selector.release"
+          value: "cluster-autoscaler"
+
   destination:
     server: https://kubernetes.default.svc
     namespace: cluster-autoscaler
   syncPolicy:
     automated:
-      # not default. 
+      # not default.
       # prune: false
       # not default
       allowEmpty: true
@@ -32,3 +71,6 @@ spec:
     syncOptions:
       # - ApplyOutOfSyncOnly=true
       - CreateNamespace=true
+# Try like here https://github.com/stacksimplify/aws-eks-kubernetes-masterclass/tree/master/17-EKS-Autoscaling-Cluster-Autoscaler
+# Try like in shalb
+#

@@ -109,19 +109,12 @@ module "eks" {
   # create_node_security_group
   # create_cluster_security_group = false
   node_security_group_additional_rules = {
-    ingress_nodeport_range_tcp = {
-      description = "EKS node port default range tcp"
-      protocol    = "tcp"
-      from_port   = 30000
-      to_port     = 32767
-      type        = "ingress"
-      self        = true
-    }
+    # besides well known node port range 30000-32767 kube-proxy uses arbitrary(?) ports for cluster IPs. Allowing all traffic between nodes.  
     ingress_nodeport_range_udp = {
       description = "EKS node port default range udp"
-      protocol    = "udp"
-      from_port   = 30000
-      to_port     = 32767
+      protocol    = "all"
+      from_port   = 0
+      to_port     = 0
       type        = "ingress"
       self        = true
     }
@@ -193,7 +186,7 @@ resource "null_resource" "kubeconfig" {
   }
   provisioner "local-exec" {
 
-    command = "sleep 120; aws eks --region ${data.aws_region.current.id} update-kubeconfig --name ${var.tags.project} 	--kubeconfig ${local.kubeconfig_path}"
+    command = "sleep 180; aws eks --region ${data.aws_region.current.id} update-kubeconfig --name ${var.tags.project} 	--kubeconfig ${local.kubeconfig_path}"
     # interpreter = ["bash", "-c"]
   }
   provisioner "local-exec" {
@@ -204,6 +197,7 @@ resource "null_resource" "kubeconfig" {
         kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml ; 
         sleep 100; 
         kubectl apply -f ${path.root}/root-application.yaml;
+        # kubectl apply -f ${path.root}/argo-apps;
 COMMAND
     environment = {
       "KUBECONFIG" : "${local.kubeconfig_path}"
