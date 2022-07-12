@@ -23,9 +23,9 @@ spec:
           value: "ca-central-1"
         - name: "cloudProvider"
           value: "aws"
+          # this role is created here autoscaler-role.tf
         - name: 'rbac.serviceAccount.annotations.eks\.amazonaws\.com/role-arn'
           value: "arn:aws:iam::249446252531:role/cluster_autoscaler"
-        # - --set rbac.serviceAccount.annotations."eks\.amazonaws\.com/role-arn"=arn:aws:iam::123456789012:role/MyRoleName
         - name: "extraArgs.v"
           value: "2"
         - name: "extraArgs.stderrthreshold"

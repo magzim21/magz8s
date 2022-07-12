@@ -10,19 +10,17 @@ spec:
   source:
     # todo make repoURL of ArgoCD dynamic
     repoURL: "https://github.com/magzim21/magz8s.git"
-    path: argo-apps
+    path: argo-projects
     targetRevision: HEAD
-    # directory:
-    #   recurse: false
+    directory:
+      recurse: true
     #   jsonnet: {}
   destination:
     server: "https://kubernetes.default.svc"
   syncPolicy:
     automated:
-      # not default.
-      prune: true
-      # not default
-      allowEmpty: true
+      prune: false
+      allowEmpty: true # not default
       # not default. enable automatic sync when the live cluster's state deviates from the state defined in Git. Default interval 5 secs.
       # selfHeal: true
     syncOptions:
