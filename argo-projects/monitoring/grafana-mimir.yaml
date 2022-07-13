@@ -16,9 +16,9 @@ spec:
     helm:
       releaseName: mimir-cluster
       valueFiles:
-        - values/grafana-mimir-custom.yaml
-        - values/grafana-mimir-small-cluster.yaml
-        - https://github.com/magzim21/magz8s/blob/main/argo-projects/monitoring/values/grafana-mimir-custom.yaml
+      # - values/grafana-mimir-custom.yaml
+      # - values/grafana-mimir-small-cluster.yaml
+        # - https://github.com/magzim21/magz8s/blob/main/argo-projects/monitoring/values/grafana-mimir-custom.yaml
         - https://github.com/magzim21/magz8s/blob/main/argo-projects/monitoring/values/grafana-mimir-small-cluster.yaml
       parameters:
         # todo de-hardcode
