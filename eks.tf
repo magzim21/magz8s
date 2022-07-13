@@ -186,7 +186,7 @@ resource "null_resource" "kubeconfig" {
   }
   provisioner "local-exec" {
 
-    command = "sleep 180; aws eks --region ${data.aws_region.current.id} update-kubeconfig --name ${var.tags.project} 	--kubeconfig ${local.kubeconfig_path}"
+    command = "sleep 300; aws eks --region ${data.aws_region.current.id} update-kubeconfig --name ${var.tags.project} 	--kubeconfig ${local.kubeconfig_path}"
     # interpreter = ["bash", "-c"]
   }
   provisioner "local-exec" {
