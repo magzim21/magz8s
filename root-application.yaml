@@ -1,3 +1,6 @@
+# ROOT APPLICATION HAS NO AUTO SYNC. MUST APPLY IT MANUALLY  ON EVERY SINGLE CHANGE!
+
+# Todo change to Application set https://argo-cd.readthedocs.io/en/stable/operator-manual/applicationset/
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
@@ -14,6 +17,7 @@ spec:
     targetRevision: HEAD
     directory:
       recurse: true
+      # exclude: "argo-projects/**/values"
     #   jsonnet: {}
   destination:
     server: "https://kubernetes.default.svc"
