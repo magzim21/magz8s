@@ -16,14 +16,16 @@ spec:
     helm:
       releaseName: mimir-cluster
       valueFiles:
-        - ./values/grafana-mimir-custom.yaml
-        - ./values/grafana-mimir-small-cluster.yaml
+        - values/grafana-mimir-custom.yaml
+        - values/grafana-mimir-small-cluster.yaml
       parameters:
         # todo de-hardcode
         - name: "serviceAccount.name"
           value: "mimir-cluster-minio"
         - name: 'serviceAccount.annotations.eks\.amazonaws\.com/role-arn'
           value: "arn:aws:iam::249446252531:role/mimir-cluster-minio"
+        - name: "minio.enabled"
+          value: "false"
   destination:
     server: https://kubernetes.default.svc
     namespace: mimir-cluster

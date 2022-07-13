@@ -1,9 +1,23 @@
 # This S3 storage is for Grafana Mimir Cluster
 
 
-resource "aws_s3_bucket" "k8s_bucket" {
+resource "aws_s3_bucket" "metrics_admin" {
 
-  bucket = "${var.tags.project}-${var.tags.environment}-mimir"
+  bucket = "${var.tags.project}-${var.tags.environment}-metrics-admin"
+  # tags = var.tags
+  # depends_on = [null_resource.s3_destroy]
+}
+
+resource "aws_s3_bucket" "metrics_ruler" {
+
+  bucket = "${var.tags.project}-${var.tags.environment}-metrics-ruler"
+  # tags = var.tags
+  # depends_on = [null_resource.s3_destroy]
+}
+
+resource "aws_s3_bucket" "metrics_tsdb" {
+
+  bucket = "${var.tags.project}-${var.tags.environment}-metrics-tsdb"
   # tags = var.tags
   # depends_on = [null_resource.s3_destroy]
 }
@@ -54,7 +68,7 @@ POLICY
       "Effect": "Allow",
       "Action": "s3:*",
       "Resource": [
-        "arn:aws:s3:::${var.tags.project}-${var.tags.environment}-mimir",
+        "arn:aws:s3:::${var.tags.project}-${var.tags.environment}",
         "arn:aws:s3:::${var.tags.project}-${var.tags.environment}-mimir/*"
       ]
     }
