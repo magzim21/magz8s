@@ -1,0 +1,44 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: ingress-lb
+  namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-wave: "1"
+spec:
+  project: default
+  source:
+    chart: aws-load-balancer-controller
+    repoURL: https://aws.github.io/eks-charts
+    targetRevision: 1.4.2
+    helm:
+      releaseName: ingress-lb
+      parameters:
+        # todo de-hardcode
+        - name: "clusterName"
+          value: "magz8s"
+        - name: "serviceAccount.create"
+          value: "true"
+        - name: "serviceAccount.name"
+          value: "aws-load-balancer-controller"
+        - name: 'serviceAccount.annotations.eks\.amazonaws\.com/role-arn'
+          value: 'arn:aws:iam::249446252531:role/aws-load-balancer-controller'
+        # - name: 'region'
+        #   value: ''
+        # - name: '--aws-vpc-id'
+        #   value: ''
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: ingress-lb
+  syncPolicy:
+    automated:
+      # not default.
+      # prune: false
+      # not default
+      allowEmpty: true
+      # not default. enable automatic sync when the live cluster's state deviates from the state defined in Git. Default interval 5 secs.
+      # selfHeal: true
+    syncOptions:
+      # - ApplyOutOfSyncOnly=true
+      - CreateNamespace=true
