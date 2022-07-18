@@ -45,12 +45,14 @@ spec:
       - CreateNamespace=true
       - RespectIgnoreDifferences=true
   ignoreDifferences:
-    - group: secrets
-      kind: Secret
+    # - group: secrets
+    #   kind: Secret
+    - group: '*'
+      kind: '*'
       name: aws-load-balancer-tls
       # namespace: ingress-lb
-      jqPathExpressions:
-        - .data
+      # jqPathExpressions:
+      #   - .data
     - group: admissionregistration.k8s.io
       kind: mutatingwebhookconfigurations
       name: aws-load-balancer-webhook
