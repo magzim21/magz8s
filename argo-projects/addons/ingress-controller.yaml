@@ -24,10 +24,10 @@ spec:
           value: "aws-load-balancer-controller"
         - name: 'serviceAccount.annotations.eks\.amazonaws\.com/role-arn'
           value: 'arn:aws:iam::249446252531:role/aws-load-balancer-controller'
-        # - name: 'region'
-        #   value: ''
-        # - name: '--aws-vpc-id'
-        #   value: ''
+        - name: 'region'
+          value: 'ca-central-1'
+        - name: 'vpcId:'
+          value: 'vpc-0cd84f7b39937284c'
   destination:
     server: https://kubernetes.default.svc
     namespace: ingress-lb
@@ -38,7 +38,8 @@ spec:
       # not default
       allowEmpty: true
       # not default. enable automatic sync when the live cluster's state deviates from the state defined in Git. Default interval 5 secs.
-      # selfHeal: true
+      selfHeal: false
     syncOptions:
       # - ApplyOutOfSyncOnly=true
       - CreateNamespace=true
+

@@ -1,17 +1,7 @@
 locals {
   kubeconfig_path = "${path.root}/kubeconfig-${var.tags.project}"
 }
-provider "kubernetes" {
-  host                   = module.eks.cluster_endpoint
-  cluster_ca_certificate = base64decode(module.eks.cluster_certificate_authority_data)
 
-  exec {
-    api_version = "client.authentication.k8s.io/v1alpha1"
-    command     = "aws"
-    # This requires the awscli to be installed locally where Terraform is executed
-    args = ["eks", "get-token", "--cluster-name", module.eks.cluster_id]
-  }
-}
 module "eks" {
   source  = "terraform-aws-modules/eks/aws"
   version = "18.23.0"
@@ -110,7 +100,7 @@ module "eks" {
   # create_cluster_security_group = false
   node_security_group_additional_rules = {
     # besides well known node port range 30000-32767 kube-proxy uses arbitrary(?) ports for cluster IPs. Allowing all traffic between nodes.  
-    ingress_nodeport_range_udp = {
+    ingress_allow_all_self = {
       description = "EKS node port default range udp"
       protocol    = "all"
       from_port   = 0
@@ -118,19 +108,11 @@ module "eks" {
       type        = "ingress"
       self        = true
     }
-    egress_nodeport_range_tcp = {
-      description = "EKS node port default range tcp"
-      protocol    = "tcp"
-      from_port   = 30000
-      to_port     = 32767
-      type        = "egress"
-      self        = true
-    }
-    egress_nodeport_range_udp = {
-      description = "EKS node port default range udp"
-      protocol    = "udp"
-      from_port   = 30000
-      to_port     = 32767
+    enress_allow_all_self = {
+      description = "EKS allow all tcp traffic inside SG"
+      protocol    = "all"
+      from_port   = 0
+      to_port     = 0
       type        = "egress"
       self        = true
     }
@@ -163,6 +145,7 @@ module "eks" {
   # create_aws_auth_configmap = true
   # manage_aws_auth_configmap = true
 
+  # todo figured out this
   aws_auth_roles = [
     {
       rolearn  = "arn:aws:iam::249446252531:role/Admin"
@@ -186,7 +169,7 @@ resource "null_resource" "kubeconfig" {
   }
   provisioner "local-exec" {
 
-    command = "sleep 300; aws eks --region ${data.aws_region.current.id} update-kubeconfig --name ${var.tags.project} 	--kubeconfig ${local.kubeconfig_path}"
+    command = " aws eks --region ${data.aws_region.current.id} update-kubeconfig --name ${var.tags.project} 	--kubeconfig ${local.kubeconfig_path}"
     # interpreter = ["bash", "-c"]
   }
   provisioner "local-exec" {
@@ -195,7 +178,7 @@ resource "null_resource" "kubeconfig" {
     command = <<COMMAND
     kubectl create namespace argocd; 
         kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml ; 
-        sleep 100; 
+        # sleep 100; 
         kubectl apply -f ${path.root}/root-application.yaml;
         # kubectl apply -f ${path.root}/argo-apps;
 COMMAND

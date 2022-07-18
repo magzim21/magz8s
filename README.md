@@ -19,7 +19,6 @@ Usage:
 
 ## Table of Contents (Optional)
 *optional  
-TODO
 
 ## Description
 Short. 
@@ -119,9 +118,11 @@ Choose your license
 - [github bio generator](https://rahuldkjain.github.io/gh-profile-readme-generator/)
 - [.gitignore file generator](https://www.toptal.com/developers/gitignore/)
 - [semver comparsion operators](https://github.com/Masterminds/semver)
+- [Github shortcuts](https://docs.github.com/en/get-started/using-github/keyboard-shortcuts)
 
 ## Include Credits
 A list with maintainers should be here. People you may relay on.  
 
 
 Enjoy Coding ❤
+]

@@ -1,0 +1,21 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: game-2048
+  namespace: argocd
+spec:
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: default
+  project: default
+  source:
+    repoURL: https://github.com/kubernetes-sigs/aws-load-balancer-controller.git
+    targetRevision: v2.4.1
+    path: docs/examples/2048/2048_full.yaml
+    syncPolicy:
+      automated:
+        allowEmpty: true
+        prune: true
+      syncOptions:
+        - CreateNamespace=true

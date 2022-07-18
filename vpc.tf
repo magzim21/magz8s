@@ -18,13 +18,13 @@ module "vpc" {
   create_flow_log_cloudwatch_log_group = true
 
   public_subnet_tags = {
-    "kubernetes.io/cluster/${var.tags.environment}" = "shared"
-    "kubernetes.io/role/elb"              = 1
+    "kubernetes.io/cluster/${var.tags.project}" = "shared"
+    "kubernetes.io/role/elb"                        = 1
   }
 
   private_subnet_tags = {
-    "kubernetes.io/cluster/${var.tags.environment}" = "shared"
-    "kubernetes.io/role/internal-elb"     = 1
+    "kubernetes.io/cluster/${var.tags.project}" = "shared"
+    "kubernetes.io/role/internal-elb"               = 1
   }
 
   # tags = var.tags

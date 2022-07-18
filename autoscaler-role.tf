@@ -17,7 +17,7 @@ resource "aws_iam_role" "cluster_autoscaler" {
 POLICY
 
   managed_policy_arns = [aws_iam_policy.autoscaler.arn]
-  
+
 }
 
 resource "aws_iam_policy" "autoscaler" {
