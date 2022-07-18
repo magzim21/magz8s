@@ -1,72 +1,36 @@
-# User defnined START
-kubeconfig*
-# User defnined END
+# Terraform files
+.terraform
+terraform.tfstate
+terraform.tfvars
+*.tfstate*
 
-# Created by https://www.toptal.com/developers/gitignore/api/terraform,macos
-# Edit at https://www.toptal.com/developers/gitignore?templates=terraform,macos
+.terraspace-cache
+*.plan
 
-### macOS ###
-# General
+# OS X files
+.history
 .DS_Store
-.AppleDouble
-.LSOverride
 
-# Icon must end with two \r
-Icon
-
-
-# Thumbnails
-._*
-
-# Files that might appear in the root of a volume
-.DocumentRevisions-V100
-.fseventsd
-.Spotlight-V100
-.TemporaryItems
-.Trashes
-.VolumeIcon.icns
-.com.apple.timemachine.donotpresent
-
-# Directories potentially created on remote AFP share
-.AppleDB
-.AppleDesktop
-Network Trash Folder
-Temporary Items
-.apdisk
-
-### macOS Patch ###
-# iCloud generated files
-*.icloud
-
-### Terraform ###
-# Local .terraform directories
-**/.terraform/*
-
-# .tfstate files
-*.tfstate
-*.tfstate.*
-
-# Crash log files
-crash.log
-crash.*.log
-
-
-# Ignore override files as they are usually used to override resources locally and so
-# are not checked in
-override.tf
-override.tf.json
-*_override.tf
-*_override.tf.json
-
-# Include override files you do wish to add to version control using negated pattern
-# !example_override.tf
-
-# Include tfplan files to ignore the plan output of command: terraform plan -out=tfplan
-# example: *tfplan*
-
-# Ignore CLI configuration files
-.terraformrc
-terraform.rc
-
-# End of https://www.toptal.com/developers/gitignore/api/terraform,macos
-
+# Common ruby files
+*.gem
+*.rbc
+.env*
+.idea
+/.bundle
+/.config
+/.yardoc
+/_yardoc
+/coverage
+/doc/
+/Gemfile.lock
+/InstalledFiles
+/lib/bundler/man
+/log
+/output
+/pkg
+/rdoc
+/spec/fixtures/project/output
+/spec/reports
+/test/tmp
+/test/version_tmp
+/tmp
