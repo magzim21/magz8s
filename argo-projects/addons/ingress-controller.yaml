@@ -49,3 +49,9 @@ spec:
     namespace: ingress-lb
     jsonPointers:
     - /data
+  - group: admissionregistration.k8s.io
+    kind: mutatingwebhookconfigurations
+    name: aws-load-balancer-webhook
+    namespace: ingress-lb
+    jsonPointers:
+    - /webhooks
