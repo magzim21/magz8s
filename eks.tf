@@ -146,11 +146,11 @@ module "eks" {
   #   }
   # }
 
-  # create_aws_auth_configmap = true # non-default and very important
+  # create_aws_auth_configmap = true 
   # aws-auth configmap
   manage_aws_auth_configmap = true
 
-  create_aws_auth_configmap = true
+  create_aws_auth_configmap = true # non-default and very important
   # manage_aws_auth_configmap = true
 
   # todo figured out this
