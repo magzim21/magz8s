@@ -23,7 +23,7 @@ spec:
         - name: "serviceAccount.name"
           value: "aws-load-balancer-controller"
         - name: 'serviceAccount.annotations.eks\.amazonaws\.com/role-arn'
-          value: 'arn:aws:iam::249446252531:role/aws-load-balancer-controller'
+          value: "arn:aws:iam::249446252531:role/aws-load-balancer-controller"
         # - name: 'region'
         #   value: 'ca-central-1'
         # - name: 'vpcId:'
@@ -39,19 +39,21 @@ spec:
       allowEmpty: true
       # not default. enable automatic sync when the live cluster's state deviates from the state defined in Git. Default interval 5 secs.
       selfHeal: false
+
     syncOptions:
       # - ApplyOutOfSyncOnly=true
       - CreateNamespace=true
+      - RespectIgnoreDifferences=true
   ignoreDifferences:
-  - group: secrets
-    kind: Secret
-    name: aws-load-balancer-tls
-    namespace: ingress-lb
-    jsonPointers:
-    - /data
-  - group: admissionregistration.k8s.io
-    kind: mutatingwebhookconfigurations
-    name: aws-load-balancer-webhook
-    namespace: ingress-lb
-    jsonPointers:
-    - /webhooks
+    - group: secrets
+      kind: Secret
+      name: aws-load-balancer-tls
+      # namespace: ingress-lb
+      jqPathExpressions:
+        - .data
+    - group: admissionregistration.k8s.io
+      kind: mutatingwebhookconfigurations
+      name: aws-load-balancer-webhook
+      # namespace: ingress-lb
+      jqPathExpressions:
+        - .webhooks
