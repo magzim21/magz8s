@@ -108,6 +108,14 @@ module "eks" {
       type        = "ingress"
       self        = true
     }
+    allow_pod_cidr_traffic = {
+      description = "Allow pod cidr traffic. That is eks subnets"
+      protocol    = "all"
+      from_port   = 0
+      to_port     = 0
+      type        = "ingress"
+      cidr_blocks = concat(module.vpc.private_subnets_cidr_blocks, module.vpc.public_subnets_cidr_blocks)
+    }
     enress_allow_all_self = {
       description = "EKS allow all tcp traffic inside SG"
       protocol    = "all"

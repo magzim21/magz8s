@@ -10,3 +10,9 @@ variable "map_users" {
 }
 
 
+variable "vpc_cidr" {
+  description = "A VPC CIDR"
+  type        = string
+}
+
+

@@ -3,7 +3,7 @@ module "vpc" {
   version = "~> 3.0"
 
   name = "eks-${var.tags.project}"
-  cidr = "10.0.0.0/16"
+  cidr = var.vpc_cidr
 
   azs             = ["${data.aws_region.current.id}a", "${data.aws_region.current.id}b"]
   private_subnets = ["10.0.1.0/24", "10.0.2.0/24"]
@@ -17,6 +17,8 @@ module "vpc" {
   create_flow_log_cloudwatch_iam_role  = true
   create_flow_log_cloudwatch_log_group = true
 
+
+# These tags are required to enable autodiscovery. Many kubernetes operators use autodiscovery by these tags.
   public_subnet_tags = {
     "kubernetes.io/cluster/${var.tags.project}" = "shared"
     "kubernetes.io/role/elb"                        = 1

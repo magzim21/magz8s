@@ -14,3 +14,6 @@ map_users = [
     groups   = ["system:masters"]
   }
 ]
+
+
+vpc_cidr = "10.0.0.0/16"
