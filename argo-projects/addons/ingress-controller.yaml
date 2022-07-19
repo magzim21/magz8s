@@ -44,18 +44,39 @@ spec:
       # - ApplyOutOfSyncOnly=true
       - CreateNamespace=true
       - RespectIgnoreDifferences=true
+  # https://github.com/argoproj/argo-cd/issues/4276#issuecomment-742165994
   ignoreDifferences:
     # - group: secrets
     #   kind: Secret
-    - group: '*'
-      kind: '*'
-      name: aws-load-balancer-tls
+    # - group: '*'
+    #   kind: '*'
+      # name: aws-load-balancer-tls
       # namespace: ingress-lb
       # jqPathExpressions:
       #   - .data
+      # Group is on the very right of `kubectl api-resources | grep -i webhook`
+    # - kind: MutatingWebhookConfiguration
+    #   group: admissionregistration.k8s.io
+    #   jsonPointers:
+    #     - /webhooks/0/clientConfig/caBundle
+    #     - /webhooks/1/clientConfig/caBundle
+    #     - /webhooks/2/clientConfig/caBundle
+    #     - /webhooks/3/clientConfig/caBundle
+    #     - /webhooks/4/clientConfig/caBundle
+    #     - /webhooks/5/clientConfig/caBundle
+    #     - /webhooks/6/clientConfig/caBundle
+    #     - /webhooks/7/clientConfig/caBundle
+      # jqPathExpressions:
+      #   - .webhooks
     - group: admissionregistration.k8s.io
-      kind: mutatingwebhookconfigurations
-      name: aws-load-balancer-webhook
-      # namespace: ingress-lb
+      kind: MutatingWebhookConfiguration
       jqPathExpressions:
-        - .webhooks
+      - .webhooks[]?.clientConfig.caBundle
+    - group: admissionregistration.k8s.io
+      kind: ValidatingWebhookConfiguration
+      jqPathExpressions:
+      - .webhooks[]?.clientConfig.caBundle
+    - kind: Secret
+      name: aws-load-balancer-tls
+      jqPathExpressions:
+      - .data

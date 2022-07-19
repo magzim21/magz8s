@@ -68,7 +68,7 @@ configStorageType: ConfigMap
 externalConfigSecretName: '{{ include "mimir.resourceName" (dict "ctx" . "component" "config") }}'
 
 # -- When 'useExternalConfig' is true, then changing 'externalConfigVersion' triggers restart of services - otherwise changes to the configuration cause a restart.
-externalConfigVersion: "0"
+externalConfigVersion: '0'
 
 mimir:
   # -- Base config file for Grafana Mimir and Grafana Enterprise Metrics. Contains Helm templates that are evaulated at install/upgrade.
@@ -90,11 +90,11 @@ mimir:
       storage:
         type: s3
         s3:
-          access_key_id: {{ .Values.minio.accessKey }}
+          # access_key_id: {{ .Values.minio.accessKey }}
           bucket_name: magz8s-stage-metrics-admin
           endpoint: s3.ca-central-1.amazonaws.com
           insecure: true
-          secret_access_key: {{ .Values.minio.secretKey }}
+          # secret_access_key: {{ .Values.minio.secretKey }}
       {{- end }}
     {{- end }}
 
@@ -107,11 +107,11 @@ mimir:
     alertmanager_storage:
       backend: s3
       s3:
-        access_key_id: {{ .Values.minio.accessKey }}
+        # access_key_id: {{ .Values.minio.accessKey }}
         bucket_name: magz8s-stage-metrics-ruler
         endpoint: s3.ca-central-1.amazonaws.com
         insecure: true
-        secret_access_key: {{ .Values.minio.secretKey }}
+        # secret_access_key: {{ .Values.minio.secretKey }}
     {{- end }}
 
     {{- if .Values.enterprise.enabled }}
@@ -148,11 +148,11 @@ mimir:
         sync_dir: /data/tsdb-sync
       {{- if .Values.minio.enabled }}
       s3:
-        access_key_id: {{ .Values.minio.accessKey }}
+        # access_key_id: {{ .Values.minio.accessKey }}
         bucket_name: magz8s-stage-metrics-tsdb
         endpoint: s3.ca-central-1.amazonaws.com
         insecure: true
-        secret_access_key: {{ .Values.minio.secretKey }}
+        # secret_access_key: {{ .Values.minio.secretKey }}
       {{- end }}
       tsdb:
         dir: /data/tsdb
@@ -242,8 +242,8 @@ mimir:
       s3:
         endpoint: s3.ca-central-1.amazonaws.com
         bucket_name: magz8s-stage-metrics-ruler
-        access_key_id: {{ .Values.minio.accessKey }}
-        secret_access_key: {{ .Values.minio.secretKey }}
+        # access_key_id: {{ .Values.minio.accessKey }}
+        # secret_access_key: {{ .Values.minio.secretKey }}
         insecure: true
     {{- end }}
 
@@ -252,6 +252,8 @@ mimir:
 
     server:
       grpc_server_max_concurrent_streams: 1000
+
+      
 
   # -- Additional structured values on top of the text based 'mimir.config'. Applied after the text based config is evaulated for templates. Enables adding and modifying YAML elements in the evaulated 'mimir.config'.
   structuredConfig: {}
@@ -323,7 +325,7 @@ alertmanager:
     # Subdirectory of Alertmanager data Persistent Volume to mount
     # Useful if the volume's root directory is not empty
     #
-    subPath: ""
+    subPath: ''
 
     # Alertmanager data Persistent Volume Storage Class
     # If defined, storageClassName: <storageClass>
@@ -425,7 +427,7 @@ distributor:
                 operator: In
                 values:
                   - distributor
-          topologyKey: "kubernetes.io/hostname"
+          topologyKey: 'kubernetes.io/hostname'
 
   annotations: {}
   persistence:
@@ -514,7 +516,8 @@ ingester:
 
     # Subdirectory of Ingester data Persistent Volume to mount
     # Useful if the volume's root directory is not empty
-    subPath: ""
+    subPath: ''
+
 
     # Ingester data Persistent Volume Storage Class
     # If defined, storageClassName: <storageClass>
@@ -581,10 +584,9 @@ overrides_exporter:
   nodeSelector: {}
   affinity: {}
 
-  securityContext:
-    {}
+  securityContext: {}
 
-    # -- The SecurityContext for overrides_exporter containers
+   # -- The SecurityContext for overrides_exporter containers
   containerSecurityContext:
     readOnlyRootFilesystem: true
 
@@ -632,8 +634,7 @@ ruler:
       memory: 128Mi
 
   # Additional ruler container arguments, e.g. log level (debug, info, warn, error)
-  extraArgs:
-    {}
+  extraArgs: {}
     # log.level: debug
 
   # Pod Labels
@@ -715,7 +716,7 @@ querier:
                   operator: In
                   values:
                     - querier
-            topologyKey: "kubernetes.io/hostname"
+            topologyKey: 'kubernetes.io/hostname'
 
   annotations: {}
   persistence:
@@ -785,7 +786,7 @@ query_frontend:
                   operator: In
                   values:
                     - query-frontend
-            topologyKey: "kubernetes.io/hostname"
+            topologyKey: 'kubernetes.io/hostname'
 
   annotations: {}
   persistence:
@@ -854,7 +855,7 @@ store_gateway:
                 operator: In
                 values:
                   - store-gateway
-          topologyKey: "kubernetes.io/hostname"
+          topologyKey: 'kubernetes.io/hostname'
 
   annotations: {}
 
@@ -882,7 +883,8 @@ store_gateway:
     # Subdirectory of Store-gateway data Persistent Volume to mount
     # Useful if the volume's root directory is not empty
     #
-    subPath: ""
+    subPath: ''
+
 
     # Store-gateway data Persistent Volume Storage Class
     # If defined, storageClassName: <storageClass>
@@ -899,10 +901,9 @@ store_gateway:
       port: http-metrics
     initialDelaySeconds: 60
 
-  securityContext:
-    {}
+  securityContext: {}
 
-    # -- The SecurityContext for store_gateway containers
+   # -- The SecurityContext for store_gateway containers
   containerSecurityContext:
     readOnlyRootFilesystem: true
 
@@ -955,7 +956,7 @@ compactor:
                   operator: In
                   values:
                     - compactor
-            topologyKey: "kubernetes.io/hostname"
+            topologyKey: 'kubernetes.io/hostname'
 
   annotations: {}
 
@@ -983,7 +984,7 @@ compactor:
     # Subdirectory of compactor data Persistent Volume to mount
     # Useful if the volume's root directory is not empty
     #
-    subPath: ""
+    subPath: ''
 
     # compactor data Persistent Volume Storage Class
     # If defined, storageClassName: <storageClass>
@@ -1292,9 +1293,12 @@ results-cache:
     annotations: {}
     labels: {}
 
+# s3
 minio:
   enabled: true
-  accessKey: grafana-mimir
+  # authenticating with service account
+  # accessKey: grafana-mimir
+  # secretKey: supersecret
   buckets:
     - name: mimir-tsdb
       policy: none
@@ -1317,7 +1321,6 @@ minio:
     requests:
       cpu: 100m
       memory: 128Mi
-  secretKey: supersecret
   # Changed the mc config path to '/tmp' from '/etc' as '/etc' is only writable by root and OpenShift will not permit this.
   configPathmc: "/tmp/minio/mc/"
 
@@ -1732,10 +1735,9 @@ gateway:
   nodeSelector: {}
   affinity: {}
 
-  securityContext:
-    {}
+  securityContext: {}
 
-    # -- The SecurityContext for gateway containers
+   # -- The SecurityContext for gateway containers
   containerSecurityContext:
     readOnlyRootFilesystem: true
 
@@ -1794,7 +1796,7 @@ smoke_test:
     # TODO: replace with weekly tag starting with r191
     tag: helm-smoke-test-d12276bfc
     pullPolicy: IfNotPresent
-  tenantId: ""
+  tenantId: ''
   extraArgs: {}
   env: []
   extraEnvFrom: []
@@ -1837,6 +1839,7 @@ metaMonitoring:
     # -- Controls whether to create PodLogs, MetricsInstance, LogsInstance, and GrafanaAgent CRs to scrape the
     # ServiceMonitors of the chart and ship metrics and logs to the remote endpoints below.
     # Note that you need to configure serviceMonitor in order to have some metrics available.
+    # MAX TODO ENABLE IT
     enabled: false
 
     # -- Controls whether to install the Grafana Agent Operator and its CRDs.
@@ -1849,19 +1852,19 @@ metaMonitoring:
       # configuration to write logs to this Loki-compatible remote. Optional.
       remote:
         # -- Full URL for Loki push endpoint. Usually ends in /loki/api/v1/push
-        url: ""
+        url: ''
 
         auth:
           # -- Used to set X-Scope-OrgID header on requests. Usually not used in combination with username and password.
-          tenantId: ""
+          tenantId: ''
 
           # -- Basic authentication username. Optional.
-          username: ""
+          username: ''
 
           # -- The value under key passwordSecretKey in this secret will be used as the basic authentication password. Required only if passwordSecretKey is set.
-          passwordSecretName: ""
+          passwordSecretName: ''
           # -- The value under this key in passwordSecretName will be used as the basic authentication password. Required only if passwordSecretName is set.
-          passwordSecretKey: ""
+          passwordSecretKey: ''
 
       # -- Client configurations for the LogsInstance that will scrape Mimir pods. Follows the format of .remote.
       additionalClientConfigs: []
@@ -1872,18 +1875,18 @@ metaMonitoring:
       # Note that you need to configure serviceMonitor in order to have some metrics available.
       remote:
         # -- Full URL for Prometheus remote-write. Usually ends in /push
-        url: ""
+        url: ''
 
         # -- Used to add HTTP headers to remote-write requests.
         headers: {}
         auth:
           # -- Basic authentication username. Optional.
-          username: ""
+          username: ''
 
           # -- The value under key passwordSecretKey in this secret will be used as the basic authentication password. Required only if passwordSecretKey is set.
-          passwordSecretName: ""
+          passwordSecretName: ''
           # -- The value under this key in passwordSecretName will be used as the basic authentication password. Required only if passwordSecretName is set.
-          passwordSecretKey: ""
+          passwordSecretKey: ''
 
       # -- Additional remote-write for the MetricsInstance that will scrape Mimir pods. Follows the format of .remote.
       additionalRemoteWriteConfigs: []
@@ -1901,7 +1904,7 @@ metaMonitoring:
             app.kubernetes.io/name: kube-state-metrics
 
     # -- Sets the namespace of the resources. Leave empty or unset to use the same namespace as the Helm release.
-    namespace: ""
+    namespace: ''
 
     # -- Labels to add to all monitoring.grafana.com custom resources.
     # Does not affect the ServiceMonitors for kubernetes metrics; use serviceMonitor.labels for that.

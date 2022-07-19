@@ -10,9 +10,9 @@ spec:
     namespace: default
   project: default
   source:
-    repoURL: https://github.com/kubernetes-sigs/aws-load-balancer-controller.git
-    targetRevision: v2.4.1
-    path: docs/examples/2048/2048_full.yaml
+    repoURL: https://github.com/magzim21/magz8s.git
+    targetRevision: HEAD
+    path: eks-apps/game-2048/game-2048.yaml
   syncPolicy:
     automated:
       allowEmpty: true

@@ -92,7 +92,17 @@ module "eks" {
       max_size     = 10
       desired_size = 2
 
-      instance_types = ["t3.medium"]
+      instance_types = ["t3.medium","t3a.xlarge"]
+      capacity_type  = "ON_DEMAND"
+      disk_size      = "30"
+      subnet_ids     = module.vpc.private_subnets
+    }
+    private_powerful = {
+      min_size     = 0
+      max_size     = 5
+      desired_size = 0
+
+      instance_types = ["t3a.xlarge"]
       capacity_type  = "ON_DEMAND"
       disk_size      = "30"
       subnet_ids     = module.vpc.private_subnets
@@ -102,7 +112,7 @@ module "eks" {
       max_size     = 10
       desired_size = 2
 
-      instance_types = ["t3.medium"]
+      instance_types = ["t3.medium","t3a.xlarge"]
       capacity_type  = "ON_DEMAND"
       disk_size      = "30"
       subnet_ids     = module.vpc.public_subnets
