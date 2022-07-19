@@ -2,12 +2,12 @@ module "vpc" {
   source  = "terraform-aws-modules/vpc/aws"
   version = "~> 3.0"
 
-  name = "eks-${var.tags.project}"
+  name = "eks-${var.tags.project}-${var.tags.environment}"
   cidr = var.vpc_cidr
 
   azs             = ["${data.aws_region.current.id}a", "${data.aws_region.current.id}b"]
-  private_subnets = ["10.0.1.0/24", "10.0.2.0/24"]
-  public_subnets  = ["10.0.100.0/24", "10.0.101.0/24"]
+  private_subnets = [cidrsubnet(var.vpc_cidr, 6, 0), cidrsubnet(var.vpc_cidr, 6, 1)]
+  public_subnets  = [cidrsubnet(var.vpc_cidr, 6, 2),cidrsubnet(var.vpc_cidr, 6, 3)]
 
   enable_nat_gateway   = true
   single_nat_gateway   = true

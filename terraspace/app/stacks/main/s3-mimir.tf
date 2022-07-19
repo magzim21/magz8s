@@ -10,14 +10,14 @@ resource "aws_s3_bucket" "metrics_admin" {
 
 resource "aws_s3_bucket" "metrics_ruler" {
 
-  bucket = "${var.tags.project}-${var.tags.environment}-metrics-ruler"
+  bucket = "${var.tags.project}-${var.tags.environment}-etrics-ruler"
   # tags = var.tags
   # depends_on = [null_resource.s3_destroy]
 }
 
 resource "aws_s3_bucket" "metrics_tsdb" {
 
-  bucket = "${var.tags.project}-${var.tags.environment}-metrics-tsdb"
+  bucket = "${var.tags.project}-${var.tags.environment}-etrics-tsdb"
   # tags = var.tags
   # depends_on = [null_resource.s3_destroy]
 }
@@ -25,7 +25,7 @@ resource "aws_s3_bucket" "metrics_tsdb" {
 
 
 resource "aws_iam_role" "mimr_cluster_minio" {
-  name               = "mimir-cluster-minio"
+  name               = "${var.tags.project}-${var.tags.environment}-mimir-cluster-minio"
   assume_role_policy = <<POLICY
 {
     "Version": "2012-10-17",

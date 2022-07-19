@@ -1,6 +1,6 @@
 
 resource "aws_iam_role" "cluster_autoscaler" {
-  name               = "cluster_autoscaler"
+  name               = "${var.tags.project}_${var.tags.environment}_cluster_autoscaler"
   assume_role_policy = <<POLICY
 {
     "Version": "2012-10-17",
@@ -21,7 +21,7 @@ POLICY
 }
 
 resource "aws_iam_policy" "autoscaler" {
-  name        = "autoscaler"
+  name        = "${var.tags.project}_${var.tags.environment}_autoscaler"
   path        = "/"
   description = ""
 

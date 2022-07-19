@@ -19,7 +19,7 @@ module "eks" {
   source  = "terraform-aws-modules/eks/aws"
   version = "18.23.0"
 
-  cluster_name    = var.tags.project
+  cluster_name    = "${var.tags.project}-${var.tags.environment}"
   cluster_version = "1.22"
 
   cluster_endpoint_private_access = true
@@ -169,13 +169,9 @@ module "eks" {
   #   }
   # }
 
-  create_aws_auth_configmap = true # non-default and very important
-  # aws-auth configmap
-  # manage_aws_auth_configmap = true
-
-
+  create_aws_auth_configmap = false # non-default and very important
   
-  # manage_aws_auth_configmap = true
+  manage_aws_auth_configmap = true
 
   # todo figured out this
   aws_auth_roles = [
