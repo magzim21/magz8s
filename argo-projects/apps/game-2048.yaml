@@ -12,7 +12,7 @@ spec:
   source:
     repoURL: https://github.com/magzim21/magz8s.git
     targetRevision: HEAD
-    path: eks-apps/game-2048/game-2048.yaml
+    path: eks-apps/game-2048/
   syncPolicy:
     automated:
       allowEmpty: true
