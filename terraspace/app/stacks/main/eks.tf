@@ -169,9 +169,9 @@ module "eks" {
   #   }
   # }
 
-  # create_aws_auth_configmap = true # non-default and very important
+  create_aws_auth_configmap = true # non-default and very important
   # aws-auth configmap
-  manage_aws_auth_configmap = true
+  # manage_aws_auth_configmap = true
 
 
   
@@ -212,7 +212,7 @@ resource "null_resource" "kubeconfig" {
     kubectl create namespace argocd; 
         kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml ; 
         # sleep 100; 
-        kubectl apply -f https://raw.githubusercontent.com/magzim21/magz8s/main/root-application.yaml;
+        kubectl apply -f https://raw.githubusercontent.com/magzim21/magz8s/main/terraspace/root-application.yaml;
 COMMAND
     environment = {
       "KUBECONFIG" : "${local.kubeconfig_path}"
