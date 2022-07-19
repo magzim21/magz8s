@@ -1,0 +1,401 @@
+# Logfile created on 2022-07-18 20:01:15 -0700 by logger.rb/v1.4.3
+[2022-07-18T20:01:15 #64360 terraspace down main]: Current directory: .terraspace-cache/ca-central-1/dev/stacks/main
+[2022-07-18T20:01:17 #64360 terraspace down main]: => terraform init -get -input=false >> /tmp/terraspace/log/init/main.log
+[2022-07-18T20:01:39 #64360 terraspace down main]: => terraform plan -input=false -destroy
+[2022-07-18T20:01:42 #64360 terraspace down main]: Releasing state lock. This may take a few moments...
+[2022-07-18T20:01:43 #64360 terraspace down main]: [31m╷[0m[0m
+[2022-07-18T20:01:43 #64360 terraspace down main]: [31m│[0m [0m[1m[31mError: [0m[0m[1mNo value for required variable[0m
+[2022-07-18T20:01:43 #64360 terraspace down main]: [31m│[0m [0m
+[2022-07-18T20:01:43 #64360 terraspace down main]: [31m│[0m [0m[0m  on variables.tf line 1:
+[2022-07-18T20:01:43 #64360 terraspace down main]: [31m│[0m [0m   1: [4mvariable "tags"[0m {[0m
+[2022-07-18T20:01:43 #64360 terraspace down main]: [31m│[0m [0m
+[2022-07-18T20:01:43 #64360 terraspace down main]: [31m│[0m [0mThe root module input variable "tags" is not set, and has no default value.
+[2022-07-18T20:01:43 #64360 terraspace down main]: [31m│[0m [0mUse a -var or -var-file command line argument to provide a value for this
+[2022-07-18T20:01:43 #64360 terraspace down main]: [31m│[0m [0mvariable.
+[2022-07-18T20:01:43 #64360 terraspace down main]: [31m╵[0m[0m
+[2022-07-18T20:01:43 #64360 terraspace down main]: [31m╷[0m[0m
+[2022-07-18T20:01:43 #64360 terraspace down main]: [31m│[0m [0m[1m[31mError: [0m[0m[1mNo value for required variable[0m
+[2022-07-18T20:01:43 #64360 terraspace down main]: [31m│[0m [0m
+[2022-07-18T20:01:43 #64360 terraspace down main]: [31m│[0m [0m[0m  on variables.tf line 7:
+[2022-07-18T20:01:43 #64360 terraspace down main]: [31m│[0m [0m   7: [4mvariable "map_users"[0m {[0m
+[2022-07-18T20:01:43 #64360 terraspace down main]: [31m│[0m [0m
+[2022-07-18T20:01:43 #64360 terraspace down main]: [31m│[0m [0mThe root module input variable "map_users" is not set, and has no default
+[2022-07-18T20:01:43 #64360 terraspace down main]: [31m│[0m [0mvalue. Use a -var or -var-file command line argument to provide a value for
+[2022-07-18T20:01:43 #64360 terraspace down main]: [31m│[0m [0mthis variable.
+[2022-07-18T20:01:43 #64360 terraspace down main]: [31m╵[0m[0m
+[2022-07-18T20:01:43 #64360 terraspace down main]: [31m╷[0m[0m
+[2022-07-18T20:01:43 #64360 terraspace down main]: [31m│[0m [0m[1m[31mError: [0m[0m[1mNo value for required variable[0m
+[2022-07-18T20:01:43 #64360 terraspace down main]: [31m│[0m [0m
+[2022-07-18T20:01:43 #64360 terraspace down main]: [31m│[0m [0m[0m  on variables.tf line 13:
+[2022-07-18T20:01:43 #64360 terraspace down main]: [31m│[0m [0m  13: [4mvariable "vpc_cidr"[0m {[0m
+[2022-07-18T20:01:43 #64360 terraspace down main]: [31m│[0m [0m
+[2022-07-18T20:01:43 #64360 terraspace down main]: [31m│[0m [0mThe root module input variable "vpc_cidr" is not set, and has no default
+[2022-07-18T20:01:43 #64360 terraspace down main]: [31m│[0m [0mvalue. Use a -var or -var-file command line argument to provide a value for
+[2022-07-18T20:01:43 #64360 terraspace down main]: [31m│[0m [0mthis variable.
+[2022-07-18T20:01:43 #64360 terraspace down main]: [31m╵[0m[0m
+[2022-07-19T10:58:30 #69125 terraspace down main]: Current directory: .terraspace-cache/ca-central-1/dev/stacks/main
+[2022-07-19T10:58:31 #69125 terraspace down main]: => terraform plan -input=false -destroy
+[2022-07-19T10:58:35 #69125 terraspace down main]: Releasing state lock. This may take a few moments...
+[2022-07-19T10:58:35 #69125 terraspace down main]: [31m╷[0m[0m
+[2022-07-19T10:58:35 #69125 terraspace down main]: [31m│[0m [0m[1m[31mError: [0m[0m[1mNo value for required variable[0m
+[2022-07-19T10:58:35 #69125 terraspace down main]: [31m│[0m [0m
+[2022-07-19T10:58:35 #69125 terraspace down main]: [31m│[0m [0m[0m  on variables.tf line 1:
+[2022-07-19T10:58:35 #69125 terraspace down main]: [31m│[0m [0m   1: [4mvariable "tags"[0m {[0m
+[2022-07-19T10:58:35 #69125 terraspace down main]: [31m│[0m [0m
+[2022-07-19T10:58:35 #69125 terraspace down main]: [31m│[0m [0mThe root module input variable "tags" is not set, and has no default value.
+[2022-07-19T10:58:35 #69125 terraspace down main]: [31m│[0m [0mUse a -var or -var-file command line argument to provide a value for this
+[2022-07-19T10:58:35 #69125 terraspace down main]: [31m│[0m [0mvariable.
+[2022-07-19T10:58:35 #69125 terraspace down main]: [31m╵[0m[0m
+[2022-07-19T10:58:35 #69125 terraspace down main]: [31m╷[0m[0m
+[2022-07-19T10:58:35 #69125 terraspace down main]: [31m│[0m [0m[1m[31mError: [0m[0m[1mNo value for required variable[0m
+[2022-07-19T10:58:35 #69125 terraspace down main]: [31m│[0m [0m
+[2022-07-19T10:58:35 #69125 terraspace down main]: [31m│[0m [0m[0m  on variables.tf line 7:
+[2022-07-19T10:58:35 #69125 terraspace down main]: [31m│[0m [0m   7: [4mvariable "map_users"[0m {[0m
+[2022-07-19T10:58:35 #69125 terraspace down main]: [31m│[0m [0m
+[2022-07-19T10:58:35 #69125 terraspace down main]: [31m│[0m [0mThe root module input variable "map_users" is not set, and has no default
+[2022-07-19T10:58:35 #69125 terraspace down main]: [31m│[0m [0mvalue. Use a -var or -var-file command line argument to provide a value for
+[2022-07-19T10:58:35 #69125 terraspace down main]: [31m│[0m [0mthis variable.
+[2022-07-19T10:58:35 #69125 terraspace down main]: [31m╵[0m[0m
+[2022-07-19T10:58:35 #69125 terraspace down main]: [31m╷[0m[0m
+[2022-07-19T10:58:35 #69125 terraspace down main]: [31m│[0m [0m[1m[31mError: [0m[0m[1mNo value for required variable[0m
+[2022-07-19T10:58:35 #69125 terraspace down main]: [31m│[0m [0m
+[2022-07-19T10:58:35 #69125 terraspace down main]: [31m│[0m [0m[0m  on variables.tf line 13:
+[2022-07-19T10:58:35 #69125 terraspace down main]: [31m│[0m [0m  13: [4mvariable "vpc_cidr"[0m {[0m
+[2022-07-19T10:58:35 #69125 terraspace down main]: [31m│[0m [0m
+[2022-07-19T10:58:35 #69125 terraspace down main]: [31m│[0m [0mThe root module input variable "vpc_cidr" is not set, and has no default
+[2022-07-19T10:58:35 #69125 terraspace down main]: [31m│[0m [0mvalue. Use a -var or -var-file command line argument to provide a value for
+[2022-07-19T10:58:35 #69125 terraspace down main]: [31m│[0m [0mthis variable.
+[2022-07-19T10:58:35 #69125 terraspace down main]: [31m╵[0m[0m
+[2022-07-19T11:24:40 #72627 terraspace down main]: Current directory: .terraspace-cache/ca-central-1/dev/stacks/main
+[2022-07-19T11:24:41 #72627 terraspace down main]: => terraform plan -input=false -destroy
+[2022-07-19T11:24:43 #72627 terraspace down main]: Acquiring state lock. This may take a few moments...
+[2022-07-19T11:24:45 #72627 terraspace down main]: Releasing state lock. This may take a few moments...
+[2022-07-19T11:24:46 #72627 terraspace down main]: [31m╷[0m[0m
+[2022-07-19T11:24:46 #72627 terraspace down main]: [31m│[0m [0m[1m[31mError: [0m[0m[1mNo value for required variable[0m
+[2022-07-19T11:24:46 #72627 terraspace down main]: [31m│[0m [0m
+[2022-07-19T11:24:46 #72627 terraspace down main]: [31m│[0m [0m[0m  on variables.tf line 1:
+[2022-07-19T11:24:46 #72627 terraspace down main]: [31m│[0m [0m   1: [4mvariable "tags"[0m {[0m
+[2022-07-19T11:24:46 #72627 terraspace down main]: [31m│[0m [0m
+[2022-07-19T11:24:46 #72627 terraspace down main]: [31m│[0m [0mThe root module input variable "tags" is not set, and has no default value.
+[2022-07-19T11:24:46 #72627 terraspace down main]: [31m│[0m [0mUse a -var or -var-file command line argument to provide a value for this
+[2022-07-19T11:24:46 #72627 terraspace down main]: [31m│[0m [0mvariable.
+[2022-07-19T11:24:46 #72627 terraspace down main]: [31m╵[0m[0m
+[2022-07-19T11:24:46 #72627 terraspace down main]: [31m╷[0m[0m
+[2022-07-19T11:24:46 #72627 terraspace down main]: [31m│[0m [0m[1m[31mError: [0m[0m[1mNo value for required variable[0m
+[2022-07-19T11:24:46 #72627 terraspace down main]: [31m│[0m [0m
+[2022-07-19T11:24:46 #72627 terraspace down main]: [31m│[0m [0m[0m  on variables.tf line 7:
+[2022-07-19T11:24:46 #72627 terraspace down main]: [31m│[0m [0m   7: [4mvariable "map_users"[0m {[0m
+[2022-07-19T11:24:46 #72627 terraspace down main]: [31m│[0m [0m
+[2022-07-19T11:24:46 #72627 terraspace down main]: [31m│[0m [0mThe root module input variable "map_users" is not set, and has no default
+[2022-07-19T11:24:46 #72627 terraspace down main]: [31m│[0m [0mvalue. Use a -var or -var-file command line argument to provide a value for
+[2022-07-19T11:24:46 #72627 terraspace down main]: [31m│[0m [0mthis variable.
+[2022-07-19T11:24:46 #72627 terraspace down main]: [31m╵[0m[0m
+[2022-07-19T11:24:46 #72627 terraspace down main]: [31m╷[0m[0m
+[2022-07-19T11:24:46 #72627 terraspace down main]: [31m│[0m [0m[1m[31mError: [0m[0m[1mNo value for required variable[0m
+[2022-07-19T11:24:46 #72627 terraspace down main]: [31m│[0m [0m
+[2022-07-19T11:24:46 #72627 terraspace down main]: [31m│[0m [0m[0m  on variables.tf line 13:
+[2022-07-19T11:24:46 #72627 terraspace down main]: [31m│[0m [0m  13: [4mvariable "vpc_cidr"[0m {[0m
+[2022-07-19T11:24:46 #72627 terraspace down main]: [31m│[0m [0m
+[2022-07-19T11:24:46 #72627 terraspace down main]: [31m│[0m [0mThe root module input variable "vpc_cidr" is not set, and has no default
+[2022-07-19T11:24:46 #72627 terraspace down main]: [31m│[0m [0mvalue. Use a -var or -var-file command line argument to provide a value for
+[2022-07-19T11:24:46 #72627 terraspace down main]: [31m│[0m [0mthis variable.
+[2022-07-19T11:24:46 #72627 terraspace down main]: [31m╵[0m[0m
+[2022-07-19T14:54:27 #33088 terraspace down main]: Current directory: .terraspace-cache/ca-central-1/dev/stacks/main
+[2022-07-19T14:54:29 #33088 terraspace down main]: => terraform plan -input=false -destroy
+[2022-07-19T14:54:29 #33088 terraspace down main]: [31m╷[0m[0m
+[2022-07-19T14:54:29 #33088 terraspace down main]: [31m│[0m [0m[1m[31mError: [0m[0m[1mDuplicate resource "aws_iam_role" configuration[0m
+[2022-07-19T14:54:29 #33088 terraspace down main]: [31m│[0m [0m
+[2022-07-19T14:54:29 #33088 terraspace down main]: [31m│[0m [0m[0m  on ingress.tf line 3:
+[2022-07-19T14:54:29 #33088 terraspace down main]: [31m│[0m [0m   3: [4mresource "aws_iam_role" "ingress_controller"[0m {[0m
+[2022-07-19T14:54:29 #33088 terraspace down main]: [31m│[0m [0m
+[2022-07-19T14:54:29 #33088 terraspace down main]: [31m│[0m [0mA aws_iam_role resource named "ingress_controller" was already declared at
+[2022-07-19T14:54:29 #33088 terraspace down main]: [31m│[0m [0mingress-controller-role.tf:2,1-45. Resource names must be unique per type
+[2022-07-19T14:54:29 #33088 terraspace down main]: [31m│[0m [0min each module.
+[2022-07-19T14:54:29 #33088 terraspace down main]: [31m╵[0m[0m
+[2022-07-19T14:55:52 #33379 terraspace down main]: Current directory: .terraspace-cache/ca-central-1/dev/stacks/main
+[2022-07-19T14:55:53 #33379 terraspace down main]: => terraform plan -input=false -destroy
+[2022-07-19T14:55:55 #33379 terraspace down main]: Acquiring state lock. This may take a few moments...
+[2022-07-19T14:55:56 #33379 terraspace down main]: Releasing state lock. This may take a few moments...
+[2022-07-19T14:55:56 #33379 terraspace down main]: [31m╷[0m[0m
+[2022-07-19T14:55:56 #33379 terraspace down main]: [31m│[0m [0m[1m[31mError: [0m[0m[1mNo value for required variable[0m
+[2022-07-19T14:55:56 #33379 terraspace down main]: [31m│[0m [0m
+[2022-07-19T14:55:56 #33379 terraspace down main]: [31m│[0m [0m[0m  on variables.tf line 1:
+[2022-07-19T14:55:56 #33379 terraspace down main]: [31m│[0m [0m   1: [4mvariable "tags"[0m {[0m
+[2022-07-19T14:55:56 #33379 terraspace down main]: [31m│[0m [0m
+[2022-07-19T14:55:56 #33379 terraspace down main]: [31m│[0m [0mThe root module input variable "tags" is not set, and has no default value.
+[2022-07-19T14:55:56 #33379 terraspace down main]: [31m│[0m [0mUse a -var or -var-file command line argument to provide a value for this
+[2022-07-19T14:55:56 #33379 terraspace down main]: [31m│[0m [0mvariable.
+[2022-07-19T14:55:56 #33379 terraspace down main]: [31m╵[0m[0m
+[2022-07-19T14:55:56 #33379 terraspace down main]: [31m╷[0m[0m
+[2022-07-19T14:55:56 #33379 terraspace down main]: [31m│[0m [0m[1m[31mError: [0m[0m[1mNo value for required variable[0m
+[2022-07-19T14:55:56 #33379 terraspace down main]: [31m│[0m [0m
+[2022-07-19T14:55:56 #33379 terraspace down main]: [31m│[0m [0m[0m  on variables.tf line 7:
+[2022-07-19T14:55:56 #33379 terraspace down main]: [31m│[0m [0m   7: [4mvariable "map_users"[0m {[0m
+[2022-07-19T14:55:57 #33379 terraspace down main]: [31m│[0m [0m
+[2022-07-19T14:55:57 #33379 terraspace down main]: [31m│[0m [0mThe root module input variable "map_users" is not set, and has no default
+[2022-07-19T14:55:57 #33379 terraspace down main]: [31m│[0m [0mvalue. Use a -var or -var-file command line argument to provide a value for
+[2022-07-19T14:55:57 #33379 terraspace down main]: [31m│[0m [0mthis variable.
+[2022-07-19T14:55:57 #33379 terraspace down main]: [31m╵[0m[0m
+[2022-07-19T14:55:57 #33379 terraspace down main]: [31m╷[0m[0m
+[2022-07-19T14:55:57 #33379 terraspace down main]: [31m│[0m [0m[1m[31mError: [0m[0m[1mNo value for required variable[0m
+[2022-07-19T14:55:57 #33379 terraspace down main]: [31m│[0m [0m
+[2022-07-19T14:55:57 #33379 terraspace down main]: [31m│[0m [0m[0m  on variables.tf line 13:
+[2022-07-19T14:55:57 #33379 terraspace down main]: [31m│[0m [0m  13: [4mvariable "vpc_cidr"[0m {[0m
+[2022-07-19T14:55:57 #33379 terraspace down main]: [31m│[0m [0m
+[2022-07-19T14:55:57 #33379 terraspace down main]: [31m│[0m [0mThe root module input variable "vpc_cidr" is not set, and has no default
+[2022-07-19T14:55:57 #33379 terraspace down main]: [31m│[0m [0mvalue. Use a -var or -var-file command line argument to provide a value for
+[2022-07-19T14:55:57 #33379 terraspace down main]: [31m│[0m [0mthis variable.
+[2022-07-19T14:55:57 #33379 terraspace down main]: [31m╵[0m[0m
+[2022-07-19T14:56:17 #33477 terraspace down main]: Current directory: .terraspace-cache/ca-central-1/stage/stacks/main
+[2022-07-19T14:56:19 #33477 terraspace down main]: => terraform plan -input=false -destroy
+[2022-07-19T14:56:21 #33477 terraspace down main]: Acquiring state lock. This may take a few moments...
+[2022-07-19T14:56:35 #33477 terraspace down main]: [0m[1mmodule.eks.data.aws_partition.current: Reading...[0m[0m
+[2022-07-19T14:56:35 #33477 terraspace down main]: [0m[1mdata.aws_region.current: Reading...[0m[0m
+[2022-07-19T14:56:35 #33477 terraspace down main]: [0m[1mmodule.vpc.data.aws_iam_policy_document.flow_log_cloudwatch_assume_role[0]: Reading...[0m[0m
+[2022-07-19T14:56:35 #33477 terraspace down main]: [0m[1mmodule.vpc.data.aws_iam_policy_document.vpc_flow_log_cloudwatch[0]: Reading...[0m[0m
+[2022-07-19T14:56:35 #33477 terraspace down main]: [0m[1mmodule.eks.data.aws_partition.current: Read complete after 0s [id=aws][0m
+[2022-07-19T14:56:35 #33477 terraspace down main]: [0m[1mdata.aws_region.current: Read complete after 0s [id=ca-central-1][0m
+[2022-07-19T14:56:35 #33477 terraspace down main]: [0m[1mmodule.vpc.data.aws_iam_policy_document.flow_log_cloudwatch_assume_role[0]: Read complete after 0s [id=1021377347][0m
+[2022-07-19T14:56:35 #33477 terraspace down main]: [0m[1mmodule.vpc.data.aws_iam_policy_document.vpc_flow_log_cloudwatch[0]: Read complete after 0s [id=2053943846][0m
+[2022-07-19T14:56:35 #33477 terraspace down main]: [0m[1mmodule.eks.data.aws_iam_policy_document.assume_role_policy[0]: Reading...[0m[0m
+[2022-07-19T14:56:35 #33477 terraspace down main]: [0m[1mmodule.eks.data.aws_iam_policy_document.assume_role_policy[0]: Read complete after 0s [id=2764486067][0m
+[2022-07-19T14:56:35 #33477 terraspace down main]: [0m[1mmodule.eks.module.eks_managed_node_group["public"].data.aws_partition.current: Reading...[0m[0m
+[2022-07-19T14:56:35 #33477 terraspace down main]: [0m[1mmodule.eks.module.eks_managed_node_group["public"].data.aws_caller_identity.current: Reading...[0m[0m
+[2022-07-19T14:56:35 #33477 terraspace down main]: [0m[1mmodule.eks.module.eks_managed_node_group["private"].data.aws_caller_identity.current: Reading...[0m[0m
+[2022-07-19T14:56:35 #33477 terraspace down main]: [0m[1mmodule.eks.module.eks_managed_node_group["private"].data.aws_partition.current: Reading...[0m[0m
+[2022-07-19T14:56:35 #33477 terraspace down main]: [0m[1mmodule.eks.module.eks_managed_node_group["private_powerful"].data.aws_caller_identity.current: Reading...[0m[0m
+[2022-07-19T14:56:35 #33477 terraspace down main]: [0m[1mmodule.eks.module.eks_managed_node_group["private_powerful"].data.aws_partition.current: Reading...[0m[0m
+[2022-07-19T14:56:35 #33477 terraspace down main]: [0m[1mmodule.eks.module.eks_managed_node_group["private_powerful"].data.aws_partition.current: Read complete after 0s [id=aws][0m
+[2022-07-19T14:56:35 #33477 terraspace down main]: [0m[1mmodule.eks.module.eks_managed_node_group["private"].data.aws_partition.current: Read complete after 0s [id=aws][0m
+[2022-07-19T14:56:35 #33477 terraspace down main]: [0m[1mmodule.eks.module.eks_managed_node_group["public"].data.aws_partition.current: Read complete after 0s [id=aws][0m
+[2022-07-19T14:56:35 #33477 terraspace down main]: [0m[1mmodule.eks.module.eks_managed_node_group["private_powerful"].data.aws_iam_policy_document.assume_role_policy[0]: Reading...[0m[0m
+[2022-07-19T14:56:35 #33477 terraspace down main]: [0m[1mmodule.eks.module.eks_managed_node_group["public"].data.aws_iam_policy_document.assume_role_policy[0]: Reading...[0m[0m
+[2022-07-19T14:56:35 #33477 terraspace down main]: [0m[1mmodule.eks.module.eks_managed_node_group["private"].data.aws_iam_policy_document.assume_role_policy[0]: Reading...[0m[0m
+[2022-07-19T14:56:35 #33477 terraspace down main]: [0m[1mmodule.eks.module.eks_managed_node_group["private"].data.aws_iam_policy_document.assume_role_policy[0]: Read complete after 0s [id=2560088296][0m
+[2022-07-19T14:56:35 #33477 terraspace down main]: [0m[1mmodule.eks.module.eks_managed_node_group["public"].data.aws_iam_policy_document.assume_role_policy[0]: Read complete after 0s [id=2560088296][0m
+[2022-07-19T14:56:35 #33477 terraspace down main]: [0m[1mmodule.eks.module.eks_managed_node_group["private_powerful"].data.aws_iam_policy_document.assume_role_policy[0]: Read complete after 0s [id=2560088296][0m
+[2022-07-19T14:56:36 #33477 terraspace down main]: [0m[1mmodule.eks.module.eks_managed_node_group["private"].data.aws_caller_identity.current: Read complete after 0s [id=249446252531][0m
+[2022-07-19T14:56:36 #33477 terraspace down main]: [0m[1mmodule.eks.module.eks_managed_node_group["public"].data.aws_caller_identity.current: Read complete after 0s [id=249446252531][0m
+[2022-07-19T14:56:36 #33477 terraspace down main]: [0m[1mmodule.eks.module.eks_managed_node_group["private_powerful"].data.aws_caller_identity.current: Read complete after 0s [id=249446252531][0m
+[2022-07-19T14:56:36 #33477 terraspace down main]: [0m
+[2022-07-19T14:56:36 #33477 terraspace down main]: [1mChanges to Outputs:[0m[0m
+[2022-07-19T14:56:36 #33477 terraspace down main]: 
+[2022-07-19T14:56:36 #33477 terraspace down main]: You can apply this plan to save these new output values to the Terraform
+[2022-07-19T14:56:36 #33477 terraspace down main]: state, without changing any real infrastructure.
+[2022-07-19T14:56:36 #33477 terraspace down main]: [33m╷[0m[0m
+[2022-07-19T14:56:36 #33477 terraspace down main]: [33m│[0m [0m[1m[33mWarning: [0m[0m[1mRedundant ignore_changes element[0m
+[2022-07-19T14:56:36 #33477 terraspace down main]: [33m│[0m [0m
+[2022-07-19T14:56:36 #33477 terraspace down main]: [33m│[0m [0m[0m  on .terraform/modules/eks/main.tf line 305, in resource "aws_eks_addon" "this":
+[2022-07-19T14:56:36 #33477 terraspace down main]: [33m│[0m [0m 305: resource [4m"aws_eks_addon"[0m "this" {[0m
+[2022-07-19T14:56:36 #33477 terraspace down main]: [33m│[0m [0m
+[2022-07-19T14:56:36 #33477 terraspace down main]: [33m│[0m [0mAdding an attribute name to ignore_changes tells Terraform to ignore future
+[2022-07-19T14:56:36 #33477 terraspace down main]: [33m│[0m [0mchanges to the argument in configuration after the object has been created,
+[2022-07-19T14:56:36 #33477 terraspace down main]: [33m│[0m [0mretaining the value originally configured.
+[2022-07-19T14:56:36 #33477 terraspace down main]: [33m│[0m [0m
+[2022-07-19T14:56:36 #33477 terraspace down main]: [33m│[0m [0mThe attribute modified_at is decided by the provider alone and therefore
+[2022-07-19T14:56:36 #33477 terraspace down main]: [33m│[0m [0mthere can be no configured value to compare with. Including this attribute
+[2022-07-19T14:56:36 #33477 terraspace down main]: [33m│[0m [0min ignore_changes has no effect. Remove the attribute from ignore_changes
+[2022-07-19T14:56:36 #33477 terraspace down main]: [33m│[0m [0mto quiet this warning.
+[2022-07-19T14:56:36 #33477 terraspace down main]: [33m╵[0m[0m
+[2022-07-19T14:56:36 #33477 terraspace down main]: [90m
+[2022-07-19T14:56:36 #33477 terraspace down main]: ─────────────────────────────────────────────────────────────────────────────[0m
+[2022-07-19T14:56:36 #33477 terraspace down main]: 
+[2022-07-19T14:56:36 #33477 terraspace down main]: Note: You didn't use the -out option to save this plan, so Terraform can't
+[2022-07-19T14:56:36 #33477 terraspace down main]: guarantee to take exactly these actions if you run "terraform apply" now.
+[2022-07-19T14:56:36 #33477 terraspace down main]: Releasing state lock. This may take a few moments...
+[2022-07-19T14:56:37 #33477 terraspace down main]: [36mHook: Running terraform before destroy hook. label: Pruning loadbalancers created by kubernetes ingress controller[0m
+[2022-07-19T14:56:37 #33477 terraspace down main]: => echo 'app/stacks/main/config/hooks/terraform.rb: test stack before hook for terraform destroy';
+  terraform output eks_vpc.arn ;
+  aws elbv2 delete-load-balancer --load-balancer-arn $(terraform output eks_vpc.arn) || echo 'Did not find ingress resources to prune.'
+  
+[2022-07-19T14:56:43 #33477 terraspace down main]: 
+[2022-07-19T14:56:43 #33477 terraspace down main]: usage: aws [options] <command> <subcommand> [<subcommand> ...] [parameters]
+[2022-07-19T14:56:43 #33477 terraspace down main]: To see help text, you can run:
+[2022-07-19T14:56:43 #33477 terraspace down main]: 
+[2022-07-19T14:56:43 #33477 terraspace down main]:   aws help
+[2022-07-19T14:56:43 #33477 terraspace down main]:   aws <command> help
+[2022-07-19T14:56:43 #33477 terraspace down main]:   aws <command> <subcommand> help
+[2022-07-19T14:56:43 #33477 terraspace down main]: 
+[2022-07-19T14:56:43 #33477 terraspace down main]: Unknown options: [0m[1m[33mWarning:, [0m[0m[1mNo, outputs, found[0m, [33m│[0m, [0m, [33m│[0m, [0m[0mThe, state, file, either, has, no, outputs, defined,, or, all, the, defined, outputs, [33m│[0m, [0mare, empty., Please, define, an, output, in, your, configuration, with, the, `output`, [33m│[0m, [0mkeyword, and, run, `terraform, refresh`, for, it, to, become, available., If, you, are, [33m│[0m, [0musing, interpolation,, please, verify, the, interpolated, value, is, not, empty., You, [33m│[0m, [0mcan, use, the, `terraform, console`, command, to, assist., [33m╵[0m[0m, [33m│[0m
+[2022-07-19T14:56:43 #33477 terraspace down main]: => terraform destroy -auto-approve
+[2022-07-19T14:56:48 #33477 terraspace down main]: [0m[1mmodule.eks.data.aws_partition.current: Reading...[0m[0m
+[2022-07-19T14:56:48 #33477 terraspace down main]: [0m[1mmodule.vpc.data.aws_iam_policy_document.vpc_flow_log_cloudwatch[0]: Reading...[0m[0m
+[2022-07-19T14:56:48 #33477 terraspace down main]: [0m[1mdata.aws_region.current: Reading...[0m[0m
+[2022-07-19T14:56:48 #33477 terraspace down main]: [0m[1mmodule.vpc.data.aws_iam_policy_document.flow_log_cloudwatch_assume_role[0]: Reading...[0m[0m
+[2022-07-19T14:56:48 #33477 terraspace down main]: [0m[1mmodule.eks.data.aws_partition.current: Read complete after 0s [id=aws][0m
+[2022-07-19T14:56:48 #33477 terraspace down main]: [0m[1mdata.aws_region.current: Read complete after 0s [id=ca-central-1][0m
+[2022-07-19T14:56:48 #33477 terraspace down main]: [0m[1mmodule.vpc.data.aws_iam_policy_document.vpc_flow_log_cloudwatch[0]: Read complete after 0s [id=2053943846][0m
+[2022-07-19T14:56:48 #33477 terraspace down main]: [0m[1mmodule.vpc.data.aws_iam_policy_document.flow_log_cloudwatch_assume_role[0]: Read complete after 0s [id=1021377347][0m
+[2022-07-19T14:56:48 #33477 terraspace down main]: [0m[1mmodule.eks.data.aws_iam_policy_document.assume_role_policy[0]: Reading...[0m[0m
+[2022-07-19T14:56:48 #33477 terraspace down main]: [0m[1mmodule.eks.data.aws_iam_policy_document.assume_role_policy[0]: Read complete after 0s [id=2764486067][0m
+[2022-07-19T14:56:48 #33477 terraspace down main]: [0m[1mmodule.eks.module.eks_managed_node_group["private"].data.aws_caller_identity.current: Reading...[0m[0m
+[2022-07-19T14:56:48 #33477 terraspace down main]: [0m[1mmodule.eks.module.eks_managed_node_group["public"].data.aws_caller_identity.current: Reading...[0m[0m
+[2022-07-19T14:56:48 #33477 terraspace down main]: [0m[1mmodule.eks.module.eks_managed_node_group["private_powerful"].data.aws_caller_identity.current: Reading...[0m[0m
+[2022-07-19T14:56:48 #33477 terraspace down main]: [0m[1mmodule.eks.module.eks_managed_node_group["private"].data.aws_partition.current: Reading...[0m[0m
+[2022-07-19T14:56:48 #33477 terraspace down main]: [0m[1mmodule.eks.module.eks_managed_node_group["private_powerful"].data.aws_partition.current: Reading...[0m[0m
+[2022-07-19T14:56:48 #33477 terraspace down main]: [0m[1mmodule.eks.module.eks_managed_node_group["public"].data.aws_partition.current: Reading...[0m[0m
+[2022-07-19T14:56:48 #33477 terraspace down main]: [0m[1mmodule.eks.module.eks_managed_node_group["private"].data.aws_partition.current: Read complete after 0s [id=aws][0m
+[2022-07-19T14:56:48 #33477 terraspace down main]: [0m[1mmodule.eks.module.eks_managed_node_group["private_powerful"].data.aws_partition.current: Read complete after 0s [id=aws][0m
+[2022-07-19T14:56:48 #33477 terraspace down main]: [0m[1mmodule.eks.module.eks_managed_node_group["public"].data.aws_partition.current: Read complete after 0s [id=aws][0m
+[2022-07-19T14:56:48 #33477 terraspace down main]: [0m[1mmodule.eks.module.eks_managed_node_group["private_powerful"].data.aws_iam_policy_document.assume_role_policy[0]: Reading...[0m[0m
+[2022-07-19T14:56:48 #33477 terraspace down main]: [0m[1mmodule.eks.module.eks_managed_node_group["public"].data.aws_iam_policy_document.assume_role_policy[0]: Reading...[0m[0m
+[2022-07-19T14:56:48 #33477 terraspace down main]: [0m[1mmodule.eks.module.eks_managed_node_group["public"].data.aws_iam_policy_document.assume_role_policy[0]: Read complete after 0s [id=2560088296][0m
+[2022-07-19T14:56:48 #33477 terraspace down main]: [0m[1mmodule.eks.module.eks_managed_node_group["private_powerful"].data.aws_iam_policy_document.assume_role_policy[0]: Read complete after 0s [id=2560088296][0m
+[2022-07-19T14:56:48 #33477 terraspace down main]: [0m[1mmodule.eks.module.eks_managed_node_group["private"].data.aws_iam_policy_document.assume_role_policy[0]: Reading...[0m[0m
+[2022-07-19T14:56:48 #33477 terraspace down main]: [0m[1mmodule.eks.module.eks_managed_node_group["private"].data.aws_iam_policy_document.assume_role_policy[0]: Read complete after 0s [id=2560088296][0m
+[2022-07-19T14:56:49 #33477 terraspace down main]: [0m[1mmodule.eks.module.eks_managed_node_group["public"].data.aws_caller_identity.current: Read complete after 0s [id=249446252531][0m
+[2022-07-19T14:56:49 #33477 terraspace down main]: [0m[1mmodule.eks.module.eks_managed_node_group["private"].data.aws_caller_identity.current: Read complete after 0s [id=249446252531][0m
+[2022-07-19T14:56:49 #33477 terraspace down main]: [0m[1mmodule.eks.module.eks_managed_node_group["private_powerful"].data.aws_caller_identity.current: Read complete after 0s [id=249446252531][0m
+[2022-07-19T14:56:49 #33477 terraspace down main]: [0m
+[2022-07-19T14:56:49 #33477 terraspace down main]: [1mChanges to Outputs:[0m[0m
+[2022-07-19T14:56:49 #33477 terraspace down main]: 
+[2022-07-19T14:56:49 #33477 terraspace down main]: You can apply this plan to save these new output values to the Terraform
+[2022-07-19T14:56:49 #33477 terraspace down main]: state, without changing any real infrastructure.
+[2022-07-19T14:56:49 #33477 terraspace down main]: [33m╷[0m[0m
+[2022-07-19T14:56:49 #33477 terraspace down main]: [33m│[0m [0m[1m[33mWarning: [0m[0m[1mRedundant ignore_changes element[0m
+[2022-07-19T14:56:49 #33477 terraspace down main]: [33m│[0m [0m
+[2022-07-19T14:56:49 #33477 terraspace down main]: [33m│[0m [0m[0m  on .terraform/modules/eks/main.tf line 305, in resource "aws_eks_addon" "this":
+[2022-07-19T14:56:49 #33477 terraspace down main]: [33m│[0m [0m 305: resource [4m"aws_eks_addon"[0m "this" {[0m
+[2022-07-19T14:56:49 #33477 terraspace down main]: [33m│[0m [0m
+[2022-07-19T14:56:49 #33477 terraspace down main]: [33m│[0m [0mAdding an attribute name to ignore_changes tells Terraform to ignore future
+[2022-07-19T14:56:49 #33477 terraspace down main]: [33m│[0m [0mchanges to the argument in configuration after the object has been created,
+[2022-07-19T14:56:49 #33477 terraspace down main]: [33m│[0m [0mretaining the value originally configured.
+[2022-07-19T14:56:49 #33477 terraspace down main]: [33m│[0m [0m
+[2022-07-19T14:56:49 #33477 terraspace down main]: [33m│[0m [0mThe attribute modified_at is decided by the provider alone and therefore
+[2022-07-19T14:56:49 #33477 terraspace down main]: [33m│[0m [0mthere can be no configured value to compare with. Including this attribute
+[2022-07-19T14:56:49 #33477 terraspace down main]: [33m│[0m [0min ignore_changes has no effect. Remove the attribute from ignore_changes
+[2022-07-19T14:56:49 #33477 terraspace down main]: [33m│[0m [0mto quiet this warning.
+[2022-07-19T14:56:49 #33477 terraspace down main]: [33m╵[0m[0m
+[2022-07-19T14:56:50 #33477 terraspace down main]: Releasing state lock. This may take a few moments...
+[2022-07-19T14:56:50 #33477 terraspace down main]: [0m[1m[32m
+[2022-07-19T14:56:50 #33477 terraspace down main]: Destroy complete! Resources: 0 destroyed.
+[2022-07-19T14:56:50 #33477 terraspace down main]: [0m
+[2022-07-19T14:56:50 #33477 terraspace down main]: [36mHook: Running terraform after destroy hook.[0m
+[2022-07-19T14:56:50 #33477 terraspace down main]: => echo 'app/stacks/main/config/hooks/terraform.rb: test stack after hook for terraform destroy'
+[2022-07-19T14:56:50 #33477 terraspace down main]: Time took: 13s
+[2022-07-19T14:59:09 #34075 terraspace down main]: Current directory: .terraspace-cache/ca-central-1/stage/stacks/main
+[2022-07-19T14:59:10 #34075 terraspace down main]: => terraform plan -input=false -destroy
+[2022-07-19T14:59:22 #34075 terraspace down main]: [0m[1mdata.aws_region.current: Reading...[0m[0m
+[2022-07-19T14:59:22 #34075 terraspace down main]: [0m[1mmodule.eks.data.aws_partition.current: Reading...[0m[0m
+[2022-07-19T14:59:22 #34075 terraspace down main]: [0m[1mmodule.eks.data.aws_partition.current: Read complete after 0s [id=aws][0m
+[2022-07-19T14:59:22 #34075 terraspace down main]: [0m[1mdata.aws_region.current: Read complete after 0s [id=ca-central-1][0m
+[2022-07-19T14:59:22 #34075 terraspace down main]: [0m[1mmodule.vpc.data.aws_iam_policy_document.flow_log_cloudwatch_assume_role[0]: Reading...[0m[0m
+[2022-07-19T14:59:22 #34075 terraspace down main]: [0m[1mmodule.vpc.data.aws_iam_policy_document.vpc_flow_log_cloudwatch[0]: Reading...[0m[0m
+[2022-07-19T14:59:22 #34075 terraspace down main]: [0m[1mmodule.vpc.data.aws_iam_policy_document.flow_log_cloudwatch_assume_role[0]: Read complete after 0s [id=1021377347][0m
+[2022-07-19T14:59:22 #34075 terraspace down main]: [0m[1mmodule.vpc.data.aws_iam_policy_document.vpc_flow_log_cloudwatch[0]: Read complete after 0s [id=2053943846][0m
+[2022-07-19T14:59:22 #34075 terraspace down main]: [0m[1mmodule.eks.data.aws_iam_policy_document.assume_role_policy[0]: Reading...[0m[0m
+[2022-07-19T14:59:22 #34075 terraspace down main]: [0m[1mmodule.eks.data.aws_iam_policy_document.assume_role_policy[0]: Read complete after 0s [id=2764486067][0m
+[2022-07-19T14:59:22 #34075 terraspace down main]: [0m[1mmodule.eks.module.eks_managed_node_group["public"].data.aws_partition.current: Reading...[0m[0m
+[2022-07-19T14:59:22 #34075 terraspace down main]: [0m[1mmodule.eks.module.eks_managed_node_group["private"].data.aws_partition.current: Reading...[0m[0m
+[2022-07-19T14:59:22 #34075 terraspace down main]: [0m[1mmodule.eks.module.eks_managed_node_group["public"].data.aws_caller_identity.current: Reading...[0m[0m
+[2022-07-19T14:59:22 #34075 terraspace down main]: [0m[1mmodule.eks.module.eks_managed_node_group["public"].data.aws_partition.current: Read complete after 0s [id=aws][0m
+[2022-07-19T14:59:22 #34075 terraspace down main]: [0m[1mmodule.eks.module.eks_managed_node_group["private_powerful"].data.aws_partition.current: Reading...[0m[0m
+[2022-07-19T14:59:22 #34075 terraspace down main]: [0m[1mmodule.eks.module.eks_managed_node_group["private"].data.aws_partition.current: Read complete after 0s [id=aws][0m
+[2022-07-19T14:59:22 #34075 terraspace down main]: [0m[1mmodule.eks.module.eks_managed_node_group["private"].data.aws_caller_identity.current: Reading...[0m[0m
+[2022-07-19T14:59:22 #34075 terraspace down main]: [0m[1mmodule.eks.module.eks_managed_node_group["private_powerful"].data.aws_caller_identity.current: Reading...[0m[0m
+[2022-07-19T14:59:22 #34075 terraspace down main]: [0m[1mmodule.eks.module.eks_managed_node_group["private_powerful"].data.aws_partition.current: Read complete after 0s [id=aws][0m
+[2022-07-19T14:59:22 #34075 terraspace down main]: [0m[1mmodule.eks.module.eks_managed_node_group["public"].data.aws_iam_policy_document.assume_role_policy[0]: Reading...[0m[0m
+[2022-07-19T14:59:22 #34075 terraspace down main]: [0m[1mmodule.eks.module.eks_managed_node_group["private"].data.aws_iam_policy_document.assume_role_policy[0]: Reading...[0m[0m
+[2022-07-19T14:59:22 #34075 terraspace down main]: [0m[1mmodule.eks.module.eks_managed_node_group["private_powerful"].data.aws_iam_policy_document.assume_role_policy[0]: Reading...[0m[0m
+[2022-07-19T14:59:22 #34075 terraspace down main]: [0m[1mmodule.eks.module.eks_managed_node_group["public"].data.aws_iam_policy_document.assume_role_policy[0]: Read complete after 0s [id=2560088296][0m
+[2022-07-19T14:59:22 #34075 terraspace down main]: [0m[1mmodule.eks.module.eks_managed_node_group["private_powerful"].data.aws_iam_policy_document.assume_role_policy[0]: Read complete after 0s [id=2560088296][0m
+[2022-07-19T14:59:22 #34075 terraspace down main]: [0m[1mmodule.eks.module.eks_managed_node_group["private"].data.aws_iam_policy_document.assume_role_policy[0]: Read complete after 0s [id=2560088296][0m
+[2022-07-19T14:59:22 #34075 terraspace down main]: [0m[1mmodule.eks.module.eks_managed_node_group["private_powerful"].data.aws_caller_identity.current: Read complete after 0s [id=249446252531][0m
+[2022-07-19T14:59:22 #34075 terraspace down main]: [0m[1mmodule.eks.module.eks_managed_node_group["public"].data.aws_caller_identity.current: Read complete after 0s [id=249446252531][0m
+[2022-07-19T14:59:22 #34075 terraspace down main]: [0m[1mmodule.eks.module.eks_managed_node_group["private"].data.aws_caller_identity.current: Read complete after 0s [id=249446252531][0m
+[2022-07-19T14:59:22 #34075 terraspace down main]: [0m
+[2022-07-19T14:59:22 #34075 terraspace down main]: [1mChanges to Outputs:[0m[0m
+[2022-07-19T14:59:22 #34075 terraspace down main]: 
+[2022-07-19T14:59:22 #34075 terraspace down main]: You can apply this plan to save these new output values to the Terraform
+[2022-07-19T14:59:22 #34075 terraspace down main]: state, without changing any real infrastructure.
+[2022-07-19T14:59:22 #34075 terraspace down main]: [33m╷[0m[0m
+[2022-07-19T14:59:22 #34075 terraspace down main]: [33m│[0m [0m[1m[33mWarning: [0m[0m[1mRedundant ignore_changes element[0m
+[2022-07-19T14:59:22 #34075 terraspace down main]: [33m│[0m [0m
+[2022-07-19T14:59:22 #34075 terraspace down main]: [33m│[0m [0m[0m  on .terraform/modules/eks/main.tf line 305, in resource "aws_eks_addon" "this":
+[2022-07-19T14:59:22 #34075 terraspace down main]: [33m│[0m [0m 305: resource [4m"aws_eks_addon"[0m "this" {[0m
+[2022-07-19T14:59:22 #34075 terraspace down main]: [33m│[0m [0m
+[2022-07-19T14:59:22 #34075 terraspace down main]: [33m│[0m [0mAdding an attribute name to ignore_changes tells Terraform to ignore future
+[2022-07-19T14:59:22 #34075 terraspace down main]: [33m│[0m [0mchanges to the argument in configuration after the object has been created,
+[2022-07-19T14:59:22 #34075 terraspace down main]: [33m│[0m [0mretaining the value originally configured.
+[2022-07-19T14:59:22 #34075 terraspace down main]: [33m│[0m [0m
+[2022-07-19T14:59:22 #34075 terraspace down main]: [33m│[0m [0mThe attribute modified_at is decided by the provider alone and therefore
+[2022-07-19T14:59:22 #34075 terraspace down main]: [33m│[0m [0mthere can be no configured value to compare with. Including this attribute
+[2022-07-19T14:59:22 #34075 terraspace down main]: [33m│[0m [0min ignore_changes has no effect. Remove the attribute from ignore_changes
+[2022-07-19T14:59:22 #34075 terraspace down main]: [33m│[0m [0mto quiet this warning.
+[2022-07-19T14:59:22 #34075 terraspace down main]: [33m╵[0m[0m
+[2022-07-19T14:59:22 #34075 terraspace down main]: [90m
+[2022-07-19T14:59:22 #34075 terraspace down main]: ─────────────────────────────────────────────────────────────────────────────[0m
+[2022-07-19T14:59:22 #34075 terraspace down main]: 
+[2022-07-19T14:59:22 #34075 terraspace down main]: Note: You didn't use the -out option to save this plan, so Terraform can't
+[2022-07-19T14:59:22 #34075 terraspace down main]: guarantee to take exactly these actions if you run "terraform apply" now.
+[2022-07-19T14:59:23 #34075 terraspace down main]: Releasing state lock. This may take a few moments...
+[2022-07-19T14:59:23 #34075 terraspace down main]: [36mHook: Running terraform before destroy hook. label: Pruning loadbalancers created by kubernetes ingress controller[0m
+[2022-07-19T14:59:23 #34075 terraspace down main]: => echo 'app/stacks/main/config/hooks/terraform.rb: test stack before hook for terraform destroy';
+  terraform output eks_vpc.arn ;
+  aws elbv2 delete-load-balancer --load-balancer-arn $(terraform output eks_vpc.arn) || echo '[33m  Did not find ingress resources to prune. [0m'
+  
+[2022-07-19T14:59:28 #34075 terraspace down main]: 
+[2022-07-19T14:59:28 #34075 terraspace down main]: usage: aws [options] <command> <subcommand> [<subcommand> ...] [parameters]
+[2022-07-19T14:59:28 #34075 terraspace down main]: To see help text, you can run:
+[2022-07-19T14:59:28 #34075 terraspace down main]: 
+[2022-07-19T14:59:28 #34075 terraspace down main]:   aws help
+[2022-07-19T14:59:28 #34075 terraspace down main]:   aws <command> help
+[2022-07-19T14:59:28 #34075 terraspace down main]:   aws <command> <subcommand> help
+[2022-07-19T14:59:28 #34075 terraspace down main]: 
+[2022-07-19T14:59:28 #34075 terraspace down main]: Unknown options: [0m[1m[33mWarning:, [0m[0m[1mNo, outputs, found[0m, [33m│[0m, [0m, [33m│[0m, [0m[0mThe, state, file, either, has, no, outputs, defined,, or, all, the, defined, outputs, [33m│[0m, [0mare, empty., Please, define, an, output, in, your, configuration, with, the, `output`, [33m│[0m, [0mkeyword, and, run, `terraform, refresh`, for, it, to, become, available., If, you, are, [33m│[0m, [0musing, interpolation,, please, verify, the, interpolated, value, is, not, empty., You, [33m│[0m, [0mcan, use, the, `terraform, console`, command, to, assist., [33m╵[0m[0m, [33m│[0m
+[2022-07-19T14:59:28 #34075 terraspace down main]: => terraform destroy -auto-approve
+[2022-07-19T14:59:33 #34075 terraspace down main]: [0m[1mmodule.vpc.data.aws_iam_policy_document.vpc_flow_log_cloudwatch[0]: Reading...[0m[0m
+[2022-07-19T14:59:33 #34075 terraspace down main]: [0m[1mdata.aws_region.current: Reading...[0m[0m
+[2022-07-19T14:59:33 #34075 terraspace down main]: [0m[1mmodule.eks.data.aws_partition.current: Reading...[0m[0m
+[2022-07-19T14:59:33 #34075 terraspace down main]: [0m[1mmodule.vpc.data.aws_iam_policy_document.vpc_flow_log_cloudwatch[0]: Read complete after 0s [id=2053943846][0m
+[2022-07-19T14:59:33 #34075 terraspace down main]: [0m[1mmodule.eks.data.aws_partition.current: Read complete after 0s [id=aws][0m
+[2022-07-19T14:59:33 #34075 terraspace down main]: [0m[1mdata.aws_region.current: Read complete after 0s [id=ca-central-1][0m
+[2022-07-19T14:59:33 #34075 terraspace down main]: [0m[1mmodule.vpc.data.aws_iam_policy_document.flow_log_cloudwatch_assume_role[0]: Reading...[0m[0m
+[2022-07-19T14:59:33 #34075 terraspace down main]: [0m[1mmodule.eks.data.aws_iam_policy_document.assume_role_policy[0]: Reading...[0m[0m
+[2022-07-19T14:59:33 #34075 terraspace down main]: [0m[1mmodule.vpc.data.aws_iam_policy_document.flow_log_cloudwatch_assume_role[0]: Read complete after 0s [id=1021377347][0m
+[2022-07-19T14:59:33 #34075 terraspace down main]: [0m[1mmodule.eks.data.aws_iam_policy_document.assume_role_policy[0]: Read complete after 0s [id=2764486067][0m
+[2022-07-19T14:59:33 #34075 terraspace down main]: [0m[1mmodule.eks.module.eks_managed_node_group["private_powerful"].data.aws_caller_identity.current: Reading...[0m[0m
+[2022-07-19T14:59:33 #34075 terraspace down main]: [0m[1mmodule.eks.module.eks_managed_node_group["private_powerful"].data.aws_partition.current: Reading...[0m[0m
+[2022-07-19T14:59:33 #34075 terraspace down main]: [0m[1mmodule.eks.module.eks_managed_node_group["public"].data.aws_partition.current: Reading...[0m[0m
+[2022-07-19T14:59:33 #34075 terraspace down main]: [0m[1mmodule.eks.module.eks_managed_node_group["private"].data.aws_caller_identity.current: Reading...[0m[0m
+[2022-07-19T14:59:33 #34075 terraspace down main]: [0m[1mmodule.eks.module.eks_managed_node_group["private"].data.aws_partition.current: Reading...[0m[0m
+[2022-07-19T14:59:33 #34075 terraspace down main]: [0m[1mmodule.eks.module.eks_managed_node_group["public"].data.aws_caller_identity.current: Reading...[0m[0m
+[2022-07-19T14:59:33 #34075 terraspace down main]: [0m[1mmodule.eks.module.eks_managed_node_group["public"].data.aws_partition.current: Read complete after 0s [id=aws][0m
+[2022-07-19T14:59:33 #34075 terraspace down main]: [0m[1mmodule.eks.module.eks_managed_node_group["private"].data.aws_partition.current: Read complete after 0s [id=aws][0m
+[2022-07-19T14:59:33 #34075 terraspace down main]: [0m[1mmodule.eks.module.eks_managed_node_group["private_powerful"].data.aws_partition.current: Read complete after 0s [id=aws][0m
+[2022-07-19T14:59:33 #34075 terraspace down main]: [0m[1mmodule.eks.module.eks_managed_node_group["private"].data.aws_iam_policy_document.assume_role_policy[0]: Reading...[0m[0m
+[2022-07-19T14:59:33 #34075 terraspace down main]: [0m[1mmodule.eks.module.eks_managed_node_group["private_powerful"].data.aws_iam_policy_document.assume_role_policy[0]: Reading...[0m[0m
+[2022-07-19T14:59:33 #34075 terraspace down main]: [0m[1mmodule.eks.module.eks_managed_node_group["public"].data.aws_iam_policy_document.assume_role_policy[0]: Reading...[0m[0m
+[2022-07-19T14:59:33 #34075 terraspace down main]: [0m[1mmodule.eks.module.eks_managed_node_group["private"].data.aws_iam_policy_document.assume_role_policy[0]: Read complete after 0s [id=2560088296][0m
+[2022-07-19T14:59:33 #34075 terraspace down main]: [0m[1mmodule.eks.module.eks_managed_node_group["private_powerful"].data.aws_iam_policy_document.assume_role_policy[0]: Read complete after 0s [id=2560088296][0m
+[2022-07-19T14:59:33 #34075 terraspace down main]: [0m[1mmodule.eks.module.eks_managed_node_group["public"].data.aws_iam_policy_document.assume_role_policy[0]: Read complete after 0s [id=2560088296][0m
+[2022-07-19T14:59:33 #34075 terraspace down main]: [0m[1mmodule.eks.module.eks_managed_node_group["public"].data.aws_caller_identity.current: Read complete after 1s [id=249446252531][0m
+[2022-07-19T14:59:33 #34075 terraspace down main]: [0m[1mmodule.eks.module.eks_managed_node_group["private"].data.aws_caller_identity.current: Read complete after 1s [id=249446252531][0m
+[2022-07-19T14:59:33 #34075 terraspace down main]: [0m[1mmodule.eks.module.eks_managed_node_group["private_powerful"].data.aws_caller_identity.current: Read complete after 1s [id=249446252531][0m
+[2022-07-19T14:59:33 #34075 terraspace down main]: [0m
+[2022-07-19T14:59:33 #34075 terraspace down main]: [1mChanges to Outputs:[0m[0m
+[2022-07-19T14:59:33 #34075 terraspace down main]: 
+[2022-07-19T14:59:33 #34075 terraspace down main]: You can apply this plan to save these new output values to the Terraform
+[2022-07-19T14:59:33 #34075 terraspace down main]: state, without changing any real infrastructure.
+[2022-07-19T14:59:33 #34075 terraspace down main]: [33m╷[0m[0m
+[2022-07-19T14:59:33 #34075 terraspace down main]: [33m│[0m [0m[1m[33mWarning: [0m[0m[1mRedundant ignore_changes element[0m
+[2022-07-19T14:59:33 #34075 terraspace down main]: [33m│[0m [0m
+[2022-07-19T14:59:33 #34075 terraspace down main]: [33m│[0m [0m[0m  on .terraform/modules/eks/main.tf line 305, in resource "aws_eks_addon" "this":
+[2022-07-19T14:59:33 #34075 terraspace down main]: [33m│[0m [0m 305: resource [4m"aws_eks_addon"[0m "this" {[0m
+[2022-07-19T14:59:33 #34075 terraspace down main]: [33m│[0m [0m
+[2022-07-19T14:59:33 #34075 terraspace down main]: [33m│[0m [0mAdding an attribute name to ignore_changes tells Terraform to ignore future
+[2022-07-19T14:59:33 #34075 terraspace down main]: [33m│[0m [0mchanges to the argument in configuration after the object has been created,
+[2022-07-19T14:59:33 #34075 terraspace down main]: [33m│[0m [0mretaining the value originally configured.
+[2022-07-19T14:59:33 #34075 terraspace down main]: [33m│[0m [0m
+[2022-07-19T14:59:33 #34075 terraspace down main]: [33m│[0m [0mThe attribute modified_at is decided by the provider alone and therefore
+[2022-07-19T14:59:33 #34075 terraspace down main]: [33m│[0m [0mthere can be no configured value to compare with. Including this attribute
+[2022-07-19T14:59:33 #34075 terraspace down main]: [33m│[0m [0min ignore_changes has no effect. Remove the attribute from ignore_changes
+[2022-07-19T14:59:33 #34075 terraspace down main]: [33m│[0m [0mto quiet this warning.
+[2022-07-19T14:59:33 #34075 terraspace down main]: [33m╵[0m[0m
+[2022-07-19T14:59:34 #34075 terraspace down main]: Releasing state lock. This may take a few moments...
+[2022-07-19T14:59:34 #34075 terraspace down main]: [0m[1m[32m
+[2022-07-19T14:59:34 #34075 terraspace down main]: Destroy complete! Resources: 0 destroyed.
+[2022-07-19T14:59:34 #34075 terraspace down main]: [0m
+[2022-07-19T14:59:34 #34075 terraspace down main]: [36mHook: Running terraform after destroy hook.[0m
+[2022-07-19T14:59:34 #34075 terraspace down main]: => echo 'app/stacks/main/config/hooks/terraform.rb: test stack after hook for terraform destroy'
+[2022-07-19T14:59:34 #34075 terraspace down main]: Time took: 11s

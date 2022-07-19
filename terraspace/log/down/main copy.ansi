@@ -1,0 +1,102 @@
+# Logfile created on 2022-07-18 20:01:15 -0700 by logger.rb/v1.4.3
+[2022-07-18T20:01:15 #64360 terraspace down main]: Current directory: .terraspace-cache/ca-central-1/dev/stacks/main
+[2022-07-18T20:01:17 #64360 terraspace down main]: => terraform init -get -input=false >> /tmp/terraspace/log/init/main.log
+[2022-07-18T20:01:39 #64360 terraspace down main]: => terraform plan -input=false -destroy
+[2022-07-18T20:01:42 #64360 terraspace down main]: Releasing state lock. This may take a few moments...
+[2022-07-18T20:01:43 #64360 terraspace down main]: [31m╷[0m[0m
+[2022-07-18T20:01:43 #64360 terraspace down main]: [31m│[0m [0m[1m[31mError: [0m[0m[1mNo value for required variable[0m
+[2022-07-18T20:01:43 #64360 terraspace down main]: [31m│[0m [0m
+[2022-07-18T20:01:43 #64360 terraspace down main]: [31m│[0m [0m[0m  on variables.tf line 1:
+[2022-07-18T20:01:43 #64360 terraspace down main]: [31m│[0m [0m   1: [4mvariable "tags"[0m {[0m
+[2022-07-18T20:01:43 #64360 terraspace down main]: [31m│[0m [0m
+[2022-07-18T20:01:43 #64360 terraspace down main]: [31m│[0m [0mThe root module input variable "tags" is not set, and has no default value.
+[2022-07-18T20:01:43 #64360 terraspace down main]: [31m│[0m [0mUse a -var or -var-file command line argument to provide a value for this
+[2022-07-18T20:01:43 #64360 terraspace down main]: [31m│[0m [0mvariable.
+[2022-07-18T20:01:43 #64360 terraspace down main]: [31m╵[0m[0m
+[2022-07-18T20:01:43 #64360 terraspace down main]: [31m╷[0m[0m
+[2022-07-18T20:01:43 #64360 terraspace down main]: [31m│[0m [0m[1m[31mError: [0m[0m[1mNo value for required variable[0m
+[2022-07-18T20:01:43 #64360 terraspace down main]: [31m│[0m [0m
+[2022-07-18T20:01:43 #64360 terraspace down main]: [31m│[0m [0m[0m  on variables.tf line 7:
+[2022-07-18T20:01:43 #64360 terraspace down main]: [31m│[0m [0m   7: [4mvariable "map_users"[0m {[0m
+[2022-07-18T20:01:43 #64360 terraspace down main]: [31m│[0m [0m
+[2022-07-18T20:01:43 #64360 terraspace down main]: [31m│[0m [0mThe root module input variable "map_users" is not set, and has no default
+[2022-07-18T20:01:43 #64360 terraspace down main]: [31m│[0m [0mvalue. Use a -var or -var-file command line argument to provide a value for
+[2022-07-18T20:01:43 #64360 terraspace down main]: [31m│[0m [0mthis variable.
+[2022-07-18T20:01:43 #64360 terraspace down main]: [31m╵[0m[0m
+[2022-07-18T20:01:43 #64360 terraspace down main]: [31m╷[0m[0m
+[2022-07-18T20:01:43 #64360 terraspace down main]: [31m│[0m [0m[1m[31mError: [0m[0m[1mNo value for required variable[0m
+[2022-07-18T20:01:43 #64360 terraspace down main]: [31m│[0m [0m
+[2022-07-18T20:01:43 #64360 terraspace down main]: [31m│[0m [0m[0m  on variables.tf line 13:
+[2022-07-18T20:01:43 #64360 terraspace down main]: [31m│[0m [0m  13: [4mvariable "vpc_cidr"[0m {[0m
+[2022-07-18T20:01:43 #64360 terraspace down main]: [31m│[0m [0m
+[2022-07-18T20:01:43 #64360 terraspace down main]: [31m│[0m [0mThe root module input variable "vpc_cidr" is not set, and has no default
+[2022-07-18T20:01:43 #64360 terraspace down main]: [31m│[0m [0mvalue. Use a -var or -var-file command line argument to provide a value for
+[2022-07-18T20:01:43 #64360 terraspace down main]: [31m│[0m [0mthis variable.
+[2022-07-18T20:01:43 #64360 terraspace down main]: [31m╵[0m[0m
+[2022-07-19T10:58:30 #69125 terraspace down main]: Current directory: .terraspace-cache/ca-central-1/dev/stacks/main
+[2022-07-19T10:58:31 #69125 terraspace down main]: => terraform plan -input=false -destroy
+[2022-07-19T10:58:35 #69125 terraspace down main]: Releasing state lock. This may take a few moments...
+[2022-07-19T10:58:35 #69125 terraspace down main]: [31m╷[0m[0m
+[2022-07-19T10:58:35 #69125 terraspace down main]: [31m│[0m [0m[1m[31mError: [0m[0m[1mNo value for required variable[0m
+[2022-07-19T10:58:35 #69125 terraspace down main]: [31m│[0m [0m
+[2022-07-19T10:58:35 #69125 terraspace down main]: [31m│[0m [0m[0m  on variables.tf line 1:
+[2022-07-19T10:58:35 #69125 terraspace down main]: [31m│[0m [0m   1: [4mvariable "tags"[0m {[0m
+[2022-07-19T10:58:35 #69125 terraspace down main]: [31m│[0m [0m
+[2022-07-19T10:58:35 #69125 terraspace down main]: [31m│[0m [0mThe root module input variable "tags" is not set, and has no default value.
+[2022-07-19T10:58:35 #69125 terraspace down main]: [31m│[0m [0mUse a -var or -var-file command line argument to provide a value for this
+[2022-07-19T10:58:35 #69125 terraspace down main]: [31m│[0m [0mvariable.
+[2022-07-19T10:58:35 #69125 terraspace down main]: [31m╵[0m[0m
+[2022-07-19T10:58:35 #69125 terraspace down main]: [31m╷[0m[0m
+[2022-07-19T10:58:35 #69125 terraspace down main]: [31m│[0m [0m[1m[31mError: [0m[0m[1mNo value for required variable[0m
+[2022-07-19T10:58:35 #69125 terraspace down main]: [31m│[0m [0m
+[2022-07-19T10:58:35 #69125 terraspace down main]: [31m│[0m [0m[0m  on variables.tf line 7:
+[2022-07-19T10:58:35 #69125 terraspace down main]: [31m│[0m [0m   7: [4mvariable "map_users"[0m {[0m
+[2022-07-19T10:58:35 #69125 terraspace down main]: [31m│[0m [0m
+[2022-07-19T10:58:35 #69125 terraspace down main]: [31m│[0m [0mThe root module input variable "map_users" is not set, and has no default
+[2022-07-19T10:58:35 #69125 terraspace down main]: [31m│[0m [0mvalue. Use a -var or -var-file command line argument to provide a value for
+[2022-07-19T10:58:35 #69125 terraspace down main]: [31m│[0m [0mthis variable.
+[2022-07-19T10:58:35 #69125 terraspace down main]: [31m╵[0m[0m
+[2022-07-19T10:58:35 #69125 terraspace down main]: [31m╷[0m[0m
+[2022-07-19T10:58:35 #69125 terraspace down main]: [31m│[0m [0m[1m[31mError: [0m[0m[1mNo value for required variable[0m
+[2022-07-19T10:58:35 #69125 terraspace down main]: [31m│[0m [0m
+[2022-07-19T10:58:35 #69125 terraspace down main]: [31m│[0m [0m[0m  on variables.tf line 13:
+[2022-07-19T10:58:35 #69125 terraspace down main]: [31m│[0m [0m  13: [4mvariable "vpc_cidr"[0m {[0m
+[2022-07-19T10:58:35 #69125 terraspace down main]: [31m│[0m [0m
+[2022-07-19T10:58:35 #69125 terraspace down main]: [31m│[0m [0mThe root module input variable "vpc_cidr" is not set, and has no default
+[2022-07-19T10:58:35 #69125 terraspace down main]: [31m│[0m [0mvalue. Use a -var or -var-file command line argument to provide a value for
+[2022-07-19T10:58:35 #69125 terraspace down main]: [31m│[0m [0mthis variable.
+[2022-07-19T10:58:35 #69125 terraspace down main]: [31m╵[0m[0m
+[2022-07-19T11:24:40 #72627 terraspace down main]: Current directory: .terraspace-cache/ca-central-1/dev/stacks/main
+[2022-07-19T11:24:41 #72627 terraspace down main]: => terraform plan -input=false -destroy
+[2022-07-19T11:24:43 #72627 terraspace down main]: Acquiring state lock. This may take a few moments...
+[2022-07-19T11:24:45 #72627 terraspace down main]: Releasing state lock. This may take a few moments...
+[2022-07-19T11:24:46 #72627 terraspace down main]: [31m╷[0m[0m
+[2022-07-19T11:24:46 #72627 terraspace down main]: [31m│[0m [0m[1m[31mError: [0m[0m[1mNo value for required variable[0m
+[2022-07-19T11:24:46 #72627 terraspace down main]: [31m│[0m [0m
+[2022-07-19T11:24:46 #72627 terraspace down main]: [31m│[0m [0m[0m  on variables.tf line 1:
+[2022-07-19T11:24:46 #72627 terraspace down main]: [31m│[0m [0m   1: [4mvariable "tags"[0m {[0m
+[2022-07-19T11:24:46 #72627 terraspace down main]: [31m│[0m [0m
+[2022-07-19T11:24:46 #72627 terraspace down main]: [31m│[0m [0mThe root module input variable "tags" is not set, and has no default value.
+[2022-07-19T11:24:46 #72627 terraspace down main]: [31m│[0m [0mUse a -var or -var-file command line argument to provide a value for this
+[2022-07-19T11:24:46 #72627 terraspace down main]: [31m│[0m [0mvariable.
+[2022-07-19T11:24:46 #72627 terraspace down main]: [31m╵[0m[0m
+[2022-07-19T11:24:46 #72627 terraspace down main]: [31m╷[0m[0m
+[2022-07-19T11:24:46 #72627 terraspace down main]: [31m│[0m [0m[1m[31mError: [0m[0m[1mNo value for required variable[0m
+[2022-07-19T11:24:46 #72627 terraspace down main]: [31m│[0m [0m
+[2022-07-19T11:24:46 #72627 terraspace down main]: [31m│[0m [0m[0m  on variables.tf line 7:
+[2022-07-19T11:24:46 #72627 terraspace down main]: [31m│[0m [0m   7: [4mvariable "map_users"[0m {[0m
+[2022-07-19T11:24:46 #72627 terraspace down main]: [31m│[0m [0m
+[2022-07-19T11:24:46 #72627 terraspace down main]: [31m│[0m [0mThe root module input variable "map_users" is not set, and has no default
+[2022-07-19T11:24:46 #72627 terraspace down main]: [31m│[0m [0mvalue. Use a -var or -var-file command line argument to provide a value for
+[2022-07-19T11:24:46 #72627 terraspace down main]: [31m│[0m [0mthis variable.
+[2022-07-19T11:24:46 #72627 terraspace down main]: [31m╵[0m[0m
+[2022-07-19T11:24:46 #72627 terraspace down main]: [31m╷[0m[0m
+[2022-07-19T11:24:46 #72627 terraspace down main]: [31m│[0m [0m[1m[31mError: [0m[0m[1mNo value for required variable[0m
+[2022-07-19T11:24:46 #72627 terraspace down main]: [31m│[0m [0m
+[2022-07-19T11:24:46 #72627 terraspace down main]: [31m│[0m [0m[0m  on variables.tf line 13:
+[2022-07-19T11:24:46 #72627 terraspace down main]: [31m│[0m [0m  13: [4mvariable "vpc_cidr"[0m {[0m
+[2022-07-19T11:24:46 #72627 terraspace down main]: [31m│[0m [0m
+[2022-07-19T11:24:46 #72627 terraspace down main]: [31m│[0m [0mThe root module input variable "vpc_cidr" is not set, and has no default
+[2022-07-19T11:24:46 #72627 terraspace down main]: [31m│[0m [0mvalue. Use a -var or -var-file command line argument to provide a value for
+[2022-07-19T11:24:46 #72627 terraspace down main]: [31m│[0m [0mthis variable.
+[2022-07-19T11:24:46 #72627 terraspace down main]: [31m╵[0m[0m

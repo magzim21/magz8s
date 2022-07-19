@@ -169,7 +169,7 @@ module "eks" {
   #   }
   # }
 
-  create_aws_auth_configmap = true # non-default and very important
+  # create_aws_auth_configmap = true # non-default and very important
   # aws-auth configmap
   manage_aws_auth_configmap = true
 

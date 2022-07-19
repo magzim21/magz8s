@@ -1,4 +1,5 @@
 
+
 resource "aws_iam_role" "ingress_controller" {
   name               = "aws-load-balancer-controller"
   assume_role_policy = <<POLICY
@@ -232,6 +233,5 @@ POLICY
 
   }
 }
-
 
 
