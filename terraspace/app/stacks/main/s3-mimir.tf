@@ -10,14 +10,14 @@ resource "aws_s3_bucket" "metrics_admin" {
 
 resource "aws_s3_bucket" "metrics_ruler" {
 
-  bucket = "${var.tags.project}-${var.tags.environment}-etrics-ruler"
+  bucket = "${var.tags.project}-${var.tags.environment}-metrics-ruler"
   # tags = var.tags
   # depends_on = [null_resource.s3_destroy]
 }
 
 resource "aws_s3_bucket" "metrics_tsdb" {
 
-  bucket = "${var.tags.project}-${var.tags.environment}-etrics-tsdb"
+  bucket = "${var.tags.project}-${var.tags.environment}-metrics-tsdb"
   # tags = var.tags
   # depends_on = [null_resource.s3_destroy]
 }

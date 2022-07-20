@@ -23,7 +23,7 @@ spec:
           value: "ca-central-1"
         - name: "cloudProvider"
           value: "aws"
-          # this role is created here autoscaler-role.tf ; todo dehardcode
+          # this role is created here autoscaler-role.tf ; TODO dehardcode
         - name: 'rbac.serviceAccount.annotations.eks\.amazonaws\.com/role-arn'
           value: "arn:aws:iam::249446252531:role/magz8s_stage_cluster_autoscaler"
         # - name: "extraArgs.v"
