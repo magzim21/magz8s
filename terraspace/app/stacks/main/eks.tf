@@ -198,7 +198,7 @@ resource "null_resource" "kubeconfig" {
   }
   provisioner "local-exec" {
 
-    command = " aws eks --region ${data.aws_region.current.id} update-kubeconfig --name ${var.tags.project} 	--kubeconfig ${local.kubeconfig_path}"
+    command = "sleep 300; aws eks --region ${data.aws_region.current.id} update-kubeconfig --name ${var.tags.project} 	--kubeconfig ${local.kubeconfig_path}"
     # interpreter = ["bash", "-c"]
   }
   provisioner "local-exec" {
@@ -207,7 +207,7 @@ resource "null_resource" "kubeconfig" {
     command = <<COMMAND
     kubectl create namespace argocd; 
         kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml ; 
-        # sleep 100; 
+        sleep 100; 
         kubectl apply -f https://raw.githubusercontent.com/magzim21/magz8s/main/terraspace/root-application.yaml;
 COMMAND
     environment = {
