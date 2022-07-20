@@ -198,22 +198,35 @@ resource "null_resource" "kubeconfig" {
   }
   provisioner "local-exec" {
 
-    command = "sleep 300; aws eks --region ${data.aws_region.current.id} update-kubeconfig --name ${var.tags.project}-${var.tags.environment} 	--kubeconfig ${local.kubeconfig_path}"
+    command = <<SCRIPT
+    test $(aws eks --region ${data.aws_region.current.id} update-kubeconfig --name ${var.tags.project}-${var.tags.environment} 	--kubeconfig ${local.kubeconfig_path}); 
+    # If previous command errored, means cluster is not ready yet
+    if [ $? != 0 ] ; then
+      sleep 300
+      aws eks --region ${data.aws_region.current.id} update-kubeconfig --name ${var.tags.project}-${var.tags.environment} 	--kubeconfig ${local.kubeconfig_path}
+      
+      kubectl create namespace argocd; 
+      kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml ; 
+      kubectl apply -f https://raw.githubusercontent.com/magzim21/magz8s/main/terraspace/root-application.yaml;
+    fi
+SCRIPT
     # interpreter = ["bash", "-c"]
-  }
-  provisioner "local-exec" {
-
-    # todo pin  argocd version
-    command = <<COMMAND
-    kubectl create namespace argocd; 
-        kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml ; 
-        sleep 100; 
-        kubectl apply -f https://raw.githubusercontent.com/magzim21/magz8s/main/terraspace/root-application.yaml;
-COMMAND
     environment = {
       "KUBECONFIG" : "${local.kubeconfig_path}"
     }
   }
+#   provisioner "local-exec" {
+
+#     # todo pin  argocd version
+#     command = <<COMMAND
+#     kubectl create namespace argocd; 
+#         kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml ; 
+#         kubectl apply -f https://raw.githubusercontent.com/magzim21/magz8s/main/terraspace/root-application.yaml;
+# COMMAND
+#     environment = {
+#       "KUBECONFIG" : "${local.kubeconfig_path}"
+#     }
+#   }
 
 }
 
