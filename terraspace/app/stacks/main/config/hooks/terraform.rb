@@ -8,7 +8,7 @@ after("apply",
 
 before("destroy",
   label: "Pruning loadbalancers created by kubernetes ingress controller",
-  # TODO more precise filter , not just vpc id.
+  # TODO more precise filter , not just vpc id. Seems that terraform output does not work here. Try  terraspace  output main     
   execute: "echo 'app/stacks/main/config/hooks/terraform.rb: test stack before hook for terraform destroy';
   test $(terraform output -json  eks_vpc )  || { echo '\u001b[33m  Unable to get eks_vpc output. \u001b[0m' ;  exit 1 }
   VPC_ID=$(terraform output -json  eks_vpc   | jq -r '.vpc_id' )
