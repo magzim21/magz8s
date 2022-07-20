@@ -18,7 +18,7 @@ spec:
       parameters:
         # todo de-hardcode
         - name: "autoDiscovery.clusterName"
-          value: "eks-magz8s-stage"
+          value: "magz8s-stage"
         - name: "awsRegion"
           value: "ca-central-1"
         - name: "cloudProvider"

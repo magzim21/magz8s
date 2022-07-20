@@ -17,7 +17,7 @@ spec:
       parameters:
         # todo de-hardcode
         - name: "clusterName"
-          value: "eks-magz8s-stage"
+          value: "magz8s-stage"
         - name: "serviceAccount.create"
           value: "true"
         - name: "serviceAccount.name"
