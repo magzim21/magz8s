@@ -7,6 +7,11 @@ terraform.tfvars
 **/.terraspace-cache
 *.plan
 
+**/*.log
+
+# Kubernetes files
+**/kubeconfig*
+
 # OS X files
 .history
 .DS_Store
@@ -34,5 +39,5 @@ terraform.tfvars
 /test/tmp
 /test/version_tmp
 /tmp
-*.log
-**/kubeconfig*
+
+
