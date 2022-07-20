@@ -34,4 +34,5 @@ terraform.tfvars
 /test/tmp
 /test/version_tmp
 /tmp
-terraspace/log/down/main.log
+*.log
+**/kubeconfig*
