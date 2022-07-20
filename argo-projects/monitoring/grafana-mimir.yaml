@@ -37,5 +37,6 @@ spec:
       # - https://github.com/magzim21/magz8s/blob/main/argo-projects/monitoring/values/grafana-mimir-custom.yaml
       # - https://github.com/magzim21/magz8s/blob/main/argo-projects/monitoring/values/grafana-mimir-small-cluster.yaml
       parameters:
+      # TODO: de-hardcode magz8s-stage-mimir-cluster-minio
         - name: 'serviceAccount.annotations.eks\.amazonaws\.com/role-arn'
-          value: "arn:aws:iam::249446252531:role/mimir-cluster-minio"
+          value: "arn:aws:iam::249446252531:role/magz8s-stage-mimir-cluster-minio"

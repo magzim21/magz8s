@@ -58,7 +58,6 @@ POLICY
         "s3:ListAllMyBuckets",
         "s3:ListJobs",
         "s3:CreateJob",
-        "s3:HeadBucket",
         "s3:ListBucket"
       ],
       "Resource": "*"
@@ -68,8 +67,8 @@ POLICY
       "Effect": "Allow",
       "Action": "s3:*",
       "Resource": [
-        "arn:aws:s3:::${var.tags.project}-${var.tags.environment}",
-        "arn:aws:s3:::${var.tags.project}-${var.tags.environment}-mimir/*"
+        "arn:aws:s3:::${var.tags.project}-${var.tags.environment}*",
+        "arn:aws:s3:::${var.tags.project}-${var.tags.environment}*/*"
       ]
     }
   ]
