@@ -15,7 +15,8 @@ Include a link to confluence not  to repeat yourslef (DRY).
 
 ## Getting started  
 Usage:
-![usage](https://public-bk-for-pics.s3.ca-central-1.amazonaws.com/git-template/CleanShot+2022-06-09+at+17.14.30.jpg)  
+`cd terraspace`
+Start with `export TS_ENV=stag` defining environment
 
 ## Table of Contents (Optional)
 *optional  

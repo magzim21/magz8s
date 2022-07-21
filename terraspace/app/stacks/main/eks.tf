@@ -199,7 +199,7 @@ resource "null_resource" "kubeconfig" {
   provisioner "local-exec" {
 
     command = <<SCRIPT
-    test $(aws eks --region ${data.aws_region.current.id} update-kubeconfig --name ${var.tags.project}-${var.tags.environment} 	--kubeconfig ${local.kubeconfig_path}); 
+    aws eks --region ${data.aws_region.current.id} update-kubeconfig --name ${var.tags.project}-${var.tags.environment} 	--kubeconfig ${local.kubeconfig_path}; 
     # If previous command errored, means cluster is not ready yet
     if [ $? != 0 ] ; then
       sleep 300
