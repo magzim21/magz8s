@@ -20,12 +20,12 @@ module "vpc" {
 
 # These tags are required to enable autodiscovery. Many kubernetes operators use autodiscovery by these tags.
   public_subnet_tags = {
-    "kubernetes.io/cluster/${var.tags.project}" = "shared"
+    "kubernetes.io/cluster/${var.tags.project}-${var.tags.environment}" = "shared"
     "kubernetes.io/role/elb"                        = 1
   }
 
   private_subnet_tags = {
-    "kubernetes.io/cluster/${var.tags.project}" = "shared"
+    "kubernetes.io/cluster/${var.tags.project}-${var.tags.environment}" = "shared"
     "kubernetes.io/role/internal-elb"               = 1
   }
 

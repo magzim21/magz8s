@@ -22,6 +22,7 @@ spec:
           value: "true"
         - name: "serviceAccount.name"
           value: "aws-load-balancer-controller"
+          # TODO: de-hardcode magz8s_stage_aws_load_balancer_controller
         - name: 'serviceAccount.annotations.eks\.amazonaws\.com/role-arn'
           value: "arn:aws:iam::249446252531:role/magz8s_stage_aws_load_balancer_controller"
         # - name: 'region'
