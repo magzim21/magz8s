@@ -199,6 +199,7 @@ resource "null_resource" "kubeconfig" {
   provisioner "local-exec" {
 
     command = <<SCRIPT
+    unset -e
     aws eks --region ${data.aws_region.current.id} update-kubeconfig --name ${var.tags.project}-${var.tags.environment} 	--kubeconfig ${local.kubeconfig_path} ||
     {
       # If previous command errored, means cluster is not ready yet
@@ -214,6 +215,7 @@ SCRIPT
     environment = {
       "KUBECONFIG" : "${local.kubeconfig_path}"
     }
+    interpreter = ["/bin/bash", "-c" ]
   }
 #   provisioner "local-exec" {
 
