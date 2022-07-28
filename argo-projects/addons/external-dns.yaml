@@ -1,3 +1,5 @@
+# https://github.com/kubernetes-sigs/external-dns/tree/master/charts/external-dns
+# https://aws.amazon.com/premiumsupport/knowledge-center/eks-set-up-externaldns/
 ---
 apiVersion: argoproj.io/v1alpha1
 kind: Application
