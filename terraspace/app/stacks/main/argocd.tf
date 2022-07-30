@@ -122,7 +122,7 @@ resource "null_resource" "push_changes" {
           git checkout -b $branch
       fi
 
-      git add $repo_root_dir/argo-projects
+      git add $repo_root_dir/argo-projects $repo_root_dir/
       git commit -am "feat: new cluster - new yaml variables" 
       git push --set-upstream origin gitops           
       kubectl apply -f https://raw.githubusercontent.com/$user_repo/$branch/root-application.yaml;
