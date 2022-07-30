@@ -1,5 +1,6 @@
 locals {
   kubeconfig_path = "${path.root}/kubeconfig-${var.tags.project}"
+  eks_cluser_name = "${var.tags.project}-${var.tags.environment}"
 }
 
 provider "kubernetes" {
@@ -19,7 +20,7 @@ module "eks" {
   source  = "terraform-aws-modules/eks/aws"
   version = "18.23.0"
 
-  cluster_name    = "${var.tags.project}-${var.tags.environment}"
+  cluster_name    = local.eks_cluser_name
   cluster_version = "1.22"
 
   cluster_endpoint_private_access = true

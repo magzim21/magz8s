@@ -37,7 +37,7 @@ resource "local_file" "external_dns" {
     "role-arn" : aws_iam_role.external_dns_controller.arn
   })
   filename   = "${path.module}/../../../../../../argo-projects/addons/external-dns.yaml"
-  depends_on = [null_resource.kubeconfig]
+  depends_on = [null_resource.kubeconfig, aws_iam_role.external_dns_controller]
 }
 resource "local_file" "cluster_autoscaler" {
   content = templatefile("${path.module}/../../../../../../argo-projects-templates/addons/cluster-autoscaler.yaml.tftpl", {
@@ -47,14 +47,16 @@ resource "local_file" "cluster_autoscaler" {
     "role-arn" : aws_iam_role.cluster_autoscaler.arn
   })
   filename   = "${path.module}/../../../../../../argo-projects/addons/cluster-autoscaler.yaml"
-  depends_on = [null_resource.kubeconfig]
+  depends_on = [null_resource.kubeconfig, aws_iam_role.cluster_autoscaler]
 }
 resource "local_file" "aws_efs_csi_driver" {
   content    = templatefile("${path.module}/../../../../../../argo-projects-templates/addons/aws-efs-csi-driver.yaml.tftpl", {
+    aws_image_registry = local.aws_image_registry
     efs_id = module.efs.id
+    role-arn = aws_iam_role.efs.arn
   })
   filename   = "${path.module}/../../../../../../argo-projects/addons/aws-efs-csi-driver.yaml"
-  depends_on = [null_resource.kubeconfig]
+  depends_on = [null_resource.kubeconfig, module.efs]
 }
 resource "local_file" "ingress_controller" {
   content = templatefile("${path.module}/../../../../../../argo-projects-templates/addons/ingress-controller.yaml.tftpl", {
@@ -62,7 +64,7 @@ resource "local_file" "ingress_controller" {
     "role-arn" : aws_iam_role.ingress_controller.arn
   })
   filename   = "${path.module}/../../../../../../argo-projects/addons/ingress-controller.yaml"
-  depends_on = [null_resource.kubeconfig]
+  depends_on = [null_resource.kubeconfig, aws_iam_role.ingress_controller]
 }
 # resource "local_file" "grafana" {
 #   content    = templatefile("${path.module}/../../../../../../argo-projects-templates/monitoring/grafana.yaml.tftpl", {})
