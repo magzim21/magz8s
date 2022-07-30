@@ -53,7 +53,8 @@ resource "null_resource" "gitops_branch" {
       existed_in_local=$(git branch --list $branch)
 
       if [[ -z $existed_in_local ]]; then
-          git checkout $branch
+          # git checkout $branch
+          echo Branch $branch already exists
       else
           git checkout -b $branch
       fi
