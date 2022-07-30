@@ -1,9 +1,3 @@
-
-
-
-
-
-
 resource "null_resource" "kubeconfig" {
   # todo: maybe remove this trigger and simplify script.
   triggers = {
@@ -52,7 +46,7 @@ resource "null_resource" "gitops_branch" {
       branch=gitops
       existed_in_local=$(git branch --list $branch)
 
-      if [[ -z $existed_in_local ]]; then
+      if [[ ! -z $existed_in_local ]]; then
           # git checkout $branch
           echo Branch $branch already exists
       else
@@ -157,5 +151,4 @@ SCRIPT
   }
   depends_on = [local_file.root_application]
 }
-
 
