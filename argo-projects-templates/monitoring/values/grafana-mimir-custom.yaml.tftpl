@@ -91,8 +91,8 @@ mimir:
         type: s3
         s3:
           # access_key_id: {{ .Values.minio.accessKey }}
-          bucket_name: magz8s-stage-metrics-admin
-          endpoint: s3.ca-central-1.amazonaws.com
+          bucket_name: ${s3_bucket_admin}
+          endpoint: s3.${region}.amazonaws.com
           insecure: true
           # secret_access_key: {{ .Values.minio.secretKey }}
       {{- end }}
@@ -108,7 +108,7 @@ mimir:
       backend: s3
       s3:
         # access_key_id: {{ .Values.minio.accessKey }}
-        bucket_name: magz8s-stage-metrics-ruler
+        bucket_name: ${s3_bucket_ruler}
         endpoint: s3.ca-central-1.amazonaws.com
         insecure: true
         # secret_access_key: {{ .Values.minio.secretKey }}
@@ -149,7 +149,7 @@ mimir:
       {{- if .Values.minio.enabled }}
       s3:
         # access_key_id: {{ .Values.minio.accessKey }}
-        bucket_name: magz8s-stage-metrics-tsdb
+        bucket_name: ${s3_bucket_tsdb}
         endpoint: s3.ca-central-1.amazonaws.com
         insecure: true
         # secret_access_key: {{ .Values.minio.secretKey }}
@@ -241,7 +241,7 @@ mimir:
       backend: s3
       s3:
         endpoint: s3.ca-central-1.amazonaws.com
-        bucket_name: magz8s-stage-metrics-ruler
+        bucket_name: ${s3_bucket_ruler}
         # access_key_id: {{ .Values.minio.accessKey }}
         # secret_access_key: {{ .Values.minio.secretKey }}
         insecure: true

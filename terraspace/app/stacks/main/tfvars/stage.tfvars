@@ -1,3 +1,5 @@
+repo_owner = "magzim21"
+
 tags = {
   environment = "stage"
   project     = "magz8s"
@@ -17,3 +19,4 @@ map_users = [
 
 
 vpc_cidr = "10.0.0.0/16"
+

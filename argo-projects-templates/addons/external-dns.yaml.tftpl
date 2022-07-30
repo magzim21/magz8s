@@ -17,18 +17,10 @@ spec:
     helm:
       releaseName: external-dns
       parameters:
-        # todo de-hardcode
         - name: "serviceAccount.create"
           value: "true"
-        # - name: "serviceAccount.name"
-        #   value: "aws_external_dns_controller"
-          # TODO: de-hardcode magz8s_stage_aws_load_balancer_controller
         - name: 'serviceAccount.annotations.eks\.amazonaws\.com/role-arn'
-          value: "arn:aws:iam::249446252531:role/magz8s_stage_aws_external_dns_controller"
-        # - name: 'region'
-        #   value: 'ca-central-1'
-        # - name: 'vpcId:'
-        #   value: 'vpc-0cd84f7b39937284c'
+          value: "${role-arn}"
   destination:
     server: https://kubernetes.default.svc
     namespace: external-dns
