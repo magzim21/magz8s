@@ -1,0 +1,44 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: prometheus-stack
+  namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-wave: "1"
+spec:
+  project: monitoring
+  source:
+    chart: kube-prometheus-stack
+    repoURL: https://prometheus-community.github.io/helm-charts
+    targetRevision: 37.2.0
+    helm:
+      releaseName: prometheus-stack
+      # parameters:
+      # # todo de-hardcode
+      #   - name: 'clusterName'
+      #     value: ''
+  destination:
+
+
+  
+    server: https://kubernetes.default.svc
+    namespace: prometheus-stack
+  syncPolicy:
+    automated:
+      # not default.
+      # prune: false
+      # not default
+      allowEmpty: true
+      # not default. enable automatic sync when the live cluster's state deviates from the state defined in Git. Default interval 5 secs.
+      selfHeal: true
+    syncOptions:
+      - ApplyOutOfSyncOnly=true
+      - CreateNamespace=true
+      - Replace=true
+      - PruneLast=true
+  ignoreDifferences:
+    - group: apiextensions.k8s.io
+      kind: CustomResourceDefinition
+      jqPathExpressions:
+      - .metadata.annotations
