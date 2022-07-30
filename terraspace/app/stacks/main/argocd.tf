@@ -107,7 +107,7 @@ resource "local_file" "root_application" {
 
 resource "null_resource" "push_changes" {
   provisioner "local-exec" {
-
+    # Todo: move git commnds to the 
     command = <<SCRIPT
 
       branch=gitops
@@ -117,7 +117,7 @@ resource "null_resource" "push_changes" {
 
       if [[ ! -z $existed_in_local ]]; then
           echo Branch $branch already exists
-          git reset  $branch 
+          git checkout $branch 
       else
           git checkout -b $branch
       fi
