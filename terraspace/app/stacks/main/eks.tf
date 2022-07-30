@@ -157,17 +157,69 @@ module "eks" {
     }
   }
 
-  # Fargate Profile(s)
-  # fargate_profiles = {
-  #   default = {
-  #     name = "default"
-  #     selectors = [
-  #       {
-  #         namespace = "default"
-  #       }
-  #     ]
-  #   }
-  # }
+
+  # AWS Fargate is a technology that provides on-demand, right-sized compute capacity for containers.
+  fargate_profiles = {
+    default = {
+      name = "default"
+      # About selectors https://eksctl.io/usage/fargate-support/
+      selectors = [
+        {
+          namespace = "fargate"
+        #   labels = {
+        #     Application = "backend"
+        #   }
+        },
+        {
+          namespace = "serverless"
+        #   labels = {
+        #     WorkerType = "fargate"
+        #   }
+        # }
+        },
+        {
+          namespace = "tutu"
+        #   labels = {
+        #     WorkerType = "fargate"
+        #   }
+        }
+      ]
+
+      # Using specific subnets instead of the subnets supplied for the cluster itself
+      # TODO: Create a special subnet for Fargate profiles
+      subnet_ids = module.vpc.private_subnets
+
+      tags = var.tags
+
+      timeouts = {
+        create = "20m"
+        delete = "20m"
+      }
+    }
+
+    secondary = {
+      name = "secondary"
+      selectors = [
+        {
+          namespace = "default"
+          labels = {
+            Environment = "test"
+            GithubRepo  = "terraform-aws-eks"
+            GithubOrg   = "terraform-aws-modules"
+          }
+        }
+      ]
+
+      # Using specific subnets instead of the subnets supplied for the cluster itself
+      # TODO: Create a special subnet for Fargate profiles
+      subnet_ids = module.vpc.private_subnets
+
+      tags = var.tags
+    }
+  }
+
+
+
 
   create_aws_auth_configmap = false # non-default and very important
   
@@ -200,16 +252,18 @@ resource "null_resource" "kubeconfig" {
 
     command = <<SCRIPT
     unset -e
+    unset -o pipefail
+    
     aws eks --region ${data.aws_region.current.id} update-kubeconfig --name ${var.tags.project}-${var.tags.environment} 	--kubeconfig ${local.kubeconfig_path} ||
     {
       # If previous command errored, means cluster is not ready yet
       sleep 300
       aws eks --region ${data.aws_region.current.id} update-kubeconfig --name ${var.tags.project}-${var.tags.environment} 	--kubeconfig ${local.kubeconfig_path}
-      
-      kubectl create namespace argocd; 
-      kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml ; 
-      kubectl apply -f https://raw.githubusercontent.com/magzim21/magz8s/main/terraspace/root-application.yaml;
       }
+      
+    kubectl create namespace argocd; 
+    kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml ; 
+    kubectl apply -f https://raw.githubusercontent.com/magzim21/magz8s/main/terraspace/root-application.yaml;
 SCRIPT
     # interpreter = ["bash", "-c"]
     environment = {
