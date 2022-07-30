@@ -139,11 +139,13 @@ resource "null_resource" "push_changes" {
   provisioner "local-exec" {
 
     command = <<SCRIPT
-      git add $(git rev-parse --show-toplevel) 
-      git commit -am "feat: new cluster - new yaml variables" 
-      git push origin/gitops
       user_repo=$(git remote -v | awk -F ":" 'NR==1{print $2}'  | awk -F ".git" '{print $1}')
       branch="gitops"git 
+      repo_root_dir=$(git rev-parse --show-toplevel) 
+
+      git add $repo_root_dir
+      git commit -am "feat: new cluster - new yaml variables" 
+      git push --set-upstream origin gitops                 
       kubectl apply -f https://raw.githubusercontent.com/$user_repo/$branch/root-application.yaml;
 
 SCRIPT
