@@ -52,7 +52,7 @@ resource "null_resource" "gitops_branch" {
       branch=gitops
       existed_in_local=$(git branch --list $branch)
 
-      if [[ -z $\{existed_in_local\} ]]; then
+      if [[ -z $existed_in_local ]]; then
           git checkout $branch
       else
           git checkout -b $branch
@@ -143,7 +143,7 @@ resource "null_resource" "push_changes" {
       branch="gitops" 
       repo_root_dir=$(git rev-parse --show-toplevel) 
 
-      git add $repo_root_dir/
+      git add $repo_root_dir/argo-projects
       git commit -am "feat: new cluster - new yaml variables" 
       git push --set-upstream origin gitops                 
       kubectl apply -f https://raw.githubusercontent.com/$user_repo/$branch/root-application.yaml;
@@ -156,3 +156,5 @@ SCRIPT
   }
   depends_on = [local_file.root_application]
 }
+
+
