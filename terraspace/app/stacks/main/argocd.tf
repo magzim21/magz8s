@@ -120,7 +120,7 @@ resource "local_file" "game_2048" {
 resource "local_file" "root_application" {
   content    = templatefile("${path.module}/../../../../../../root-application.yaml.tftpl", {
     "repo_owner" : var.repo_owner,
-    "repo_name" : var.repo_name
+    "repo_name" : var.repo_name,
     "targetRevision": local.gitops_branch
   })
   filename   = "${path.module}/../../../../../../root-application.yaml"
