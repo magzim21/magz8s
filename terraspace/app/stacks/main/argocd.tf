@@ -166,7 +166,7 @@ SCRIPT
     }
     interpreter = ["/bin/bash", "-c"]
   }
-  depends_on = [local_file.root_application]
+  depends_on = [local_file.root_application, null_resource.kubeconfig]
 }
 
 
