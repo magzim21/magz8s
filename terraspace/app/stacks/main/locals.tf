@@ -1,4 +1,7 @@
 locals {
+  kubeconfig_path = "${path.root}/kubeconfig-${var.tags.project}"
+  
+  eks_cluser_name = "${var.tags.project}-${var.tags.environment}"
   efs_driver_images_map = {
     af-south-1     = "877085696533.dkr.ecr.af-south-1.amazonaws.com",
     ap-east-1      = "800184023465.dkr.ecr.ap-east-1.amazonaws.com",

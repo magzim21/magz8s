@@ -9,13 +9,9 @@ resource "null_resource" "kubeconfig" {
     unset -e
     unset -o pipefail
 
-    aws eks --region ${data.aws_region.current.id} update-kubeconfig --name ${var.tags.project}-${var.tags.environment} 	--kubeconfig ${local.kubeconfig_path} ||
-    {
-      # If previous command errored, means cluster is not ready yet
-      sleep 300
-      aws eks --region ${data.aws_region.current.id} update-kubeconfig --name ${var.tags.project}-${var.tags.environment} 	--kubeconfig ${local.kubeconfig_path}
-      }
-      
+    sleep 300
+    aws eks --region ${data.aws_region.current.id} update-kubeconfig --name ${local.eks_cluser_name} 	--kubeconfig ${local.kubeconfig_path};
+    
     kubectl create namespace argocd; 
     kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml ; 
   

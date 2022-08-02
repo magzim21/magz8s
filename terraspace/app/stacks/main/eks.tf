@@ -1,7 +1,4 @@
-locals {
-  kubeconfig_path = "${path.root}/kubeconfig-${var.tags.project}"
-  eks_cluser_name = "${var.tags.project}-${var.tags.environment}"
-}
+
 
 provider "kubernetes" {
   host                   = module.eks.cluster_endpoint
