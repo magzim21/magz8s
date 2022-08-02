@@ -1,15 +1,19 @@
+resource "null_resource" "wait" {
+    provisioner "local-exec" {
+      command = "sleep 300"
+    }
+}
 resource "null_resource" "kubeconfig" {
   # todo: maybe remove this trigger and simplify script.
-  # triggers = {
-  #   always_run = "${timestamp()}"
-  # }
+  triggers = {
+    always_run = "${timestamp()}"
+  }
   provisioner "local-exec" {
 
     command = <<SCRIPT
     unset -e
     unset -o pipefail
 
-    sleep 300
     aws eks --region ${data.aws_region.current.id} update-kubeconfig --name ${local.eks_cluser_name} 	--kubeconfig ${local.kubeconfig_path};
     
     kubectl create namespace argocd; 
@@ -21,6 +25,9 @@ SCRIPT
     }
     interpreter = ["/bin/bash", "-c"]
   }
+  depends_on = [
+    null_resource.wait
+  ]
 }
 
 # Todo output argocd 
@@ -161,4 +168,6 @@ SCRIPT
   }
   depends_on = [local_file.root_application]
 }
+
+
 
