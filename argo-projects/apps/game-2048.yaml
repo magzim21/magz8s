@@ -13,7 +13,7 @@ spec:
   project: default
   source:
     repoURL: https://github.com/magzim21/magz8s.git
-    targetRevision: HEAD
+    targetRevision: ${gitops_branch}
     path: eks-apps/game-2048/
   syncPolicy:
     automated:

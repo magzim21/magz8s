@@ -1,6 +1,8 @@
 locals {
-  kubeconfig_path = "${path.root}/kubeconfig-${var.tags.project}"
+  kubeconfig_path = "${path.root}/kubeconfig-${local.eks_cluser_name}"
+  gitops_branch = "gitops-${local.eks_cluser_name}"
   
+  # TODO: Change to ${var.tags.project}_${var.tags.environment} and replace such references
   eks_cluser_name = "${var.tags.project}-${var.tags.environment}"
   efs_driver_images_map = {
     af-south-1     = "877085696533.dkr.ecr.af-south-1.amazonaws.com",

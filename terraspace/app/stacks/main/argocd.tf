@@ -37,7 +37,7 @@ resource "local_file" "external_dns" {
 }
 resource "local_file" "cluster_autoscaler" {
   content = templatefile("${path.module}/../../../../../../argo-projects-templates/addons/cluster-autoscaler.yaml.tftpl", {
-    "clusterName" : "${var.tags.project}-${var.tags.environment}",
+    "clusterName" : local.eks_cluser_name,
     "awsRegion" : data.aws_region.current.id,
     "cloudProvider" : "aws",
     "role-arn" : aws_iam_role.cluster_autoscaler.arn
@@ -89,7 +89,8 @@ resource "local_file" "grafana_mimir" {
   content    = templatefile("${path.module}/../../../../../../argo-projects-templates/monitoring/grafana-mimir.yaml.tftpl", {
     "repo_owner" : var.repo_owner,
     "repo_name" : var.repo_name,
-    "role-arn": aws_iam_role.mimr_cluster_minio.arn
+    "role-arn": aws_iam_role.mimr_cluster_minio.arn,
+    "targetRevision": local.gitops_branch
   })
   filename   = "${path.module}/../../../../../../argo-projects/monitoring/grafana-mimir.yaml"
   depends_on = [null_resource.kubeconfig]
@@ -108,6 +109,7 @@ resource "local_file" "game_2048" {
   content = templatefile("${path.module}/../../../../../../argo-projects-templates/apps/game-2048.yaml.tftpl", {
     "repo_owner" : var.repo_owner,
     "repo_name" : var.repo_name,
+    "targetRevision": local.gitops_branch
   })
   filename   = "${path.module}/../../../../../../argo-projects/apps/game-2048.yaml"
   depends_on = [null_resource.kubeconfig]
@@ -119,6 +121,7 @@ resource "local_file" "root_application" {
   content    = templatefile("${path.module}/../../../../../../root-application.yaml.tftpl", {
     "repo_owner" : var.repo_owner,
     "repo_name" : var.repo_name
+    "targetRevision": local.gitops_branch
   })
   filename   = "${path.module}/../../../../../../root-application.yaml"
   depends_on = [null_resource.kubeconfig]
@@ -133,7 +136,7 @@ resource "null_resource" "push_changes" {
     # Todo: move git commnds to the 
     command = <<SCRIPT
 
-      branch=gitops
+      branch=${local.gitops_branch}
       existed_in_local=$(git branch --list $branch)
       user_repo=$(git remote -v | awk -F ":" 'NR==1{print $2}'  | awk -F ".git" '{print $1}')
       repo_root_dir=$(git rev-parse --show-toplevel) 
@@ -147,7 +150,7 @@ resource "null_resource" "push_changes" {
 
       git add $repo_root_dir/argo-projects   $repo_root_dir/root-application.yaml
       git commit -am "feat: new cluster - new yaml variables" 
-      git push --set-upstream origin gitops           
+      git push --set-upstream origin $branch           
       kubectl apply -f https://raw.githubusercontent.com/$user_repo/$branch/root-application.yaml;
 
 SCRIPT

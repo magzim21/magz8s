@@ -14,7 +14,7 @@ spec:
     # todo make repoURL of ArgoCD dynamic
     repoURL: "https://github.com/${repo_owner}/${repo_name}.git"
     path: argo-projects
-    targetRevision: HEAD
+    targetRevision: ${gitops_branch}
     directory:
       recurse: true
       exclude: "argo-projects/**/values"

@@ -16,7 +16,6 @@ spec:
     helm:
       releaseName: cluster-autoscaler
       parameters:
-        # todo de-hardcode
         - name: "autoDiscovery.clusterName"
           value: "${clusterName}"
         - name: "awsRegion"
