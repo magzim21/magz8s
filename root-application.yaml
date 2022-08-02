@@ -14,7 +14,7 @@ spec:
     # todo make repoURL of ArgoCD dynamic
     repoURL: "https://github.com/magzim21/magz8s.git"
     path: argo-projects
-    targetRevision: gitops-magz8s-prod
+    targetRevision: gitops-magz8s-stage
     directory:
       recurse: true
       exclude: "argo-projects/**/values"

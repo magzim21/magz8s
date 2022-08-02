@@ -34,4 +34,4 @@ spec:
         - https://raw.githubusercontent.com/magzim21/magz8s/gitops/argo-projects/monitoring/values/grafana-mimir-custom.yaml
       parameters:
         - name: 'serviceAccount.annotations.eks\.amazonaws\.com/role-arn'
-          value: arn:aws:iam::249446252531:role/magz8s-prod-mimir-cluster-minio
+          value: arn:aws:iam::249446252531:role/magz8s-stage-mimir-cluster-minio
