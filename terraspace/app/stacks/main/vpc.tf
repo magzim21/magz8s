@@ -30,4 +30,20 @@ module "vpc" {
   }
 
   # tags = var.tags
+  depends_on = [
+    null_resource.sleep_vpc
+  ]
+}
+
+
+resource "null_resource" "sleep_vpc" {
+  # todo: maybe remove this trigger and simplify script.
+  # triggers = {
+  #   always_run = "${timestamp()}"
+  # }
+  provisioner "local-exec" {
+
+    command = "sleep 300"
+    when = destroy
+  }
 }

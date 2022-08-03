@@ -6,6 +6,7 @@ resource "null_resource" "sleep_eks" {
   provisioner "local-exec" {
 
     command = "sleep 300"
+    when = create
   }
 }
 
@@ -17,6 +18,7 @@ resource "null_resource" "kubeconfig" {
   #   always_run = "${timestamp()}"
   # }
   provisioner "local-exec" {
+    when = create
 
     command = <<SCRIPT
 
@@ -146,6 +148,7 @@ resource "null_resource" "push_changes" {
     always_run = "${timestamp()}"
   }
   provisioner "local-exec" {
+    when = create
     # Todo: move git commnds to the 
     command = <<SCRIPT
 
