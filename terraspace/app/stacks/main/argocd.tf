@@ -160,6 +160,7 @@ resource "null_resource" "push_changes" {
       if [[ ! -z $existed_in_local ]]; then
           echo Branch $branch already exists
           git checkout $branch 
+          git reset --hard main
       else
           git checkout -b $branch
       fi
@@ -169,7 +170,7 @@ resource "null_resource" "push_changes" {
       git push --set-upstream origin $branch           
       kubectl apply -f https://raw.githubusercontent.com/$user_repo/$branch/root-application.yaml;
 
-      git checkout - 
+      git checkout main
 SCRIPT
     environment = {
       "KUBECONFIG" : "${local.kubeconfig_path}"
