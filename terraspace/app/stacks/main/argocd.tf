@@ -8,6 +8,9 @@ resource "null_resource" "sleep_eks" {
     command = "sleep 300"
     when = create
   }
+  depends_on = [
+    module.eks
+  ]
 }
 
 
