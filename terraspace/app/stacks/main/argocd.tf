@@ -21,11 +21,26 @@ resource "null_resource" "kubeconfig" {
     when = create
 
     command = <<SCRIPT
+      branch=${local.gitops_branch}
+      existed_in_local=$(git branch --list $branch)
+      user_repo=$(git remote -v | awk -F ":" 'NR==1{print $2}'  | awk -F ".git" '{print $1}')
+      repo_root_dir=$(git rev-parse --show-toplevel) 
 
-    aws eks --region ${data.aws_region.current.id} update-kubeconfig --name ${local.eks_cluser_name} 	--kubeconfig ${local.kubeconfig_path};
-    
-    kubectl create namespace argocd; 
-    kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml ; 
+      if [[ ! -z $existed_in_local ]]; then
+          echo Branch $branch already exists
+          git checkout $branch 
+          git stash
+          git reset --hard main
+      else
+          git checkout -b $branch
+      fi
+
+      aws eks --region ${data.aws_region.current.id} update-kubeconfig --name ${local.eks_cluser_name} 	--kubeconfig ${local.kubeconfig_path};
+      
+      kubectl create namespace argocd; 
+      kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml ; 
+
+
   
 SCRIPT
     environment = {
@@ -157,13 +172,6 @@ resource "null_resource" "push_changes" {
       user_repo=$(git remote -v | awk -F ":" 'NR==1{print $2}'  | awk -F ".git" '{print $1}')
       repo_root_dir=$(git rev-parse --show-toplevel) 
 
-      if [[ ! -z $existed_in_local ]]; then
-          echo Branch $branch already exists
-          git checkout $branch 
-          git reset --hard main
-      else
-          git checkout -b $branch
-      fi
 
       git add $repo_root_dir/argo-projects   $repo_root_dir/root-application.yaml
       git commit -am "feat: new cluster - new yaml variables" 

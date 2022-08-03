@@ -30,12 +30,9 @@ module "vpc" {
   }
 
   # tags = var.tags
-  depends_on = [
-    null_resource.sleep_vpc
-  ]
 }
 
-
+# Need to wait until all resources are pruned before deleting VPC.
 resource "null_resource" "sleep_vpc" {
   # todo: maybe remove this trigger and simplify script.
   # triggers = {
@@ -43,7 +40,10 @@ resource "null_resource" "sleep_vpc" {
   # }
   provisioner "local-exec" {
 
-    command = "sleep 300"
+    command = "sleep 200"
     when = destroy
   }
+  depends_on = [
+    module.vpc
+  ]
 }
