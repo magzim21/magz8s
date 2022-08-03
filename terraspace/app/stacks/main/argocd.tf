@@ -1,3 +1,16 @@
+resource "null_resource" "sleep_eks" {
+  # todo: maybe remove this trigger and simplify script.
+  # triggers = {
+  #   always_run = "${timestamp()}"
+  # }
+  provisioner "local-exec" {
+
+    command = "sleep 300"
+  }
+}
+
+
+
 resource "null_resource" "kubeconfig" {
   # todo: maybe remove this trigger and simplify script.
   # triggers = {
@@ -6,10 +19,7 @@ resource "null_resource" "kubeconfig" {
   provisioner "local-exec" {
 
     command = <<SCRIPT
-    unset -e
-    unset -o pipefail
 
-    sleep 300
     aws eks --region ${data.aws_region.current.id} update-kubeconfig --name ${local.eks_cluser_name} 	--kubeconfig ${local.kubeconfig_path};
     
     kubectl create namespace argocd; 
@@ -21,6 +31,9 @@ SCRIPT
     }
     interpreter = ["/bin/bash", "-c"]
   }
+  depends_on = [
+    null_resource.sleep_eks
+  ]
 }
 
 # Todo output argocd 
@@ -153,6 +166,7 @@ resource "null_resource" "push_changes" {
       git push --set-upstream origin $branch           
       kubectl apply -f https://raw.githubusercontent.com/$user_repo/$branch/root-application.yaml;
 
+      git checkout - 
 SCRIPT
     environment = {
       "KUBECONFIG" : "${local.kubeconfig_path}"
