@@ -23,7 +23,7 @@ spec:
         - name: "controller.serviceAccount.annotations.eks\\.amazonaws\\.com/role-arn"
           value: "arn:aws:iam::249446252531:role/magz8s-prod_efs" # module.iam_assumable_role_efs.this_iam_role_arn
         - name: "storageClasses"
-          value: '{"name":"efs-sc","parameters":{"provisioningMode":"efs-ap","fileSystemId":"fs-088df4b50763819b4","directoryPerms":"700","gidRangeStart":"1000","gidRangeEnd":"2000"},"volumeBindingMode":"Immediate"}'
+          value: '{"name":"efs-sc","parameters":{"provisioningMode":"efs-ap","fileSystemId":"fs-04e4509d39dd2e1d0","directoryPerms":"700","gidRangeStart":"1000","gidRangeEnd":"2000"},"volumeBindingMode":"Immediate"}'
         
 
 
