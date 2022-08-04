@@ -18,17 +18,24 @@ before("destroy",
   done
   
   CLUSTER_ID=$(terraform output  -json  eks   | jq -r '.cluster_id')
-  LB_ARN=$(
-    aws elbv2 describe-tags --resource-arns $(aws elbv2  describe-load-balancers --output json   | jq -r '.LoadBalancers[] | .LoadBalancerArn')  --output json  |
-      jq -r --arg  CLUSTER_ID $CLUSTER_ID  '.TagDescriptions[] |
-        select(
-            (.Tags |  index({\"Key\":\"elbv2.k8s.aws/cluster\",\"Value\":$CLUSTER_ID}) ) and 
-            (.Tags | index({\"Key\":\"ingress.k8s.aws/resource\",\"Value\":\"LoadBalancer\"}) ) )
-        | .ResourceArn '  && echo '\u001b[32m  Pruned security groups  \u001b[33m'  || echo '\u001b[33m  Did not find security groups to prune. \u001b[0m' 
-)
+  SG_IDs=$(
+    aws ec2 describe-security-groups --output json | 
+    jq -r --arg  CLUSTER_ID $CLUSTER_ID '.SecurityGroups[] | 
+      select(
+          ((.Tags |  index({\"Key\":\"elbv2.k8s.aws/cluster\",\"Value\":$CLUSTER_ID}) ) and 
+          (.Tags |  index({\"Key\":\"elbv2.k8s.aws/resource\",\"Value\":\"backend-sg\"}) ) ) or
+          (.Tags |  index({\"Key\":(\"kubernetes.io/cluster/\" + $CLUSTER_ID),\"Value\":\"owned\"}) )
+          )
+      | .GroupId '
+
+
+  )
+  for SG in $SG_IDs ; do
+    aws ec2 delete-security-group --group-id $SG  && echo '\u001b[32m  Pruned security group $SG  \u001b[33m' 
+  done
 
   ",
-  exit_on_fail: false,
+  exit_on_fail: true,
 )
 
 after("destroy",
