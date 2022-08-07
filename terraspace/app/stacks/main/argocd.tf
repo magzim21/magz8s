@@ -5,7 +5,7 @@ resource "null_resource" "sleep_eks" {
   # }
   provisioner "local-exec" {
 
-    command = "sleep 300"
+    command = "sleep 400"
     when = create
   }
   depends_on = [
