@@ -6,7 +6,7 @@ resource "null_resource" "sleep_eks" {
   provisioner "local-exec" {
 
     command = "sleep 400"
-    when = create
+    when    = create
   }
   depends_on = [
     module.eks
@@ -26,7 +26,7 @@ resource "null_resource" "kubeconfig" {
     command = <<SCRIPT
       branch=${local.gitops_branch}
       existed_in_local=$(git branch --list $branch)
-      user_repo=$(git remote -v | awk -F ":" 'NR==1{print $2}'  | awk -F ".git" '{print $1}')
+      repo_owner=${repo_owner}
       repo_root_dir=$(git rev-parse --show-toplevel) 
 
       if [[ ! -z $existed_in_local ]]; then
@@ -79,10 +79,10 @@ resource "local_file" "cluster_autoscaler" {
   depends_on = [null_resource.kubeconfig, aws_iam_role.cluster_autoscaler]
 }
 resource "local_file" "aws_efs_csi_driver" {
-  content    = templatefile("${path.module}/../../../../../../argo-projects-templates/addons/aws-efs-csi-driver.yaml.tftpl", {
+  content = templatefile("${path.module}/../../../../../../argo-projects-templates/addons/aws-efs-csi-driver.yaml.tftpl", {
     aws_image_registry = local.aws_image_registry
-    efs_id = module.efs.id
-    role-arn = aws_iam_role.efs.arn
+    efs_id             = module.efs.id
+    role-arn           = aws_iam_role.efs.arn
   })
   filename   = "${path.module}/../../../../../../argo-projects/addons/aws-efs-csi-driver.yaml"
   depends_on = [null_resource.kubeconfig, module.efs]
@@ -119,11 +119,11 @@ resource "local_file" "grafana_mimir_custom" {
   depends_on = [null_resource.kubeconfig]
 }
 resource "local_file" "grafana_mimir" {
-  content    = templatefile("${path.module}/../../../../../../argo-projects-templates/monitoring/grafana-mimir.yaml.tftpl", {
+  content = templatefile("${path.module}/../../../../../../argo-projects-templates/monitoring/grafana-mimir.yaml.tftpl", {
     "repo_owner" : var.repo_owner,
     "repo_name" : var.repo_name,
-    "role-arn": aws_iam_role.mimr_cluster_minio.arn,
-    "targetRevision": local.gitops_branch
+    "role-arn" : aws_iam_role.mimr_cluster_minio.arn,
+    "targetRevision" : local.gitops_branch
   })
   filename   = "${path.module}/../../../../../../argo-projects/monitoring/grafana-mimir.yaml"
   depends_on = [null_resource.kubeconfig]
@@ -142,7 +142,7 @@ resource "local_file" "game_2048" {
   content = templatefile("${path.module}/../../../../../../argo-projects-templates/apps/game-2048.yaml.tftpl", {
     "repo_owner" : var.repo_owner,
     "repo_name" : var.repo_name,
-    "targetRevision": local.gitops_branch
+    "targetRevision" : local.gitops_branch
   })
   filename   = "${path.module}/../../../../../../argo-projects/apps/game-2048.yaml"
   depends_on = [null_resource.kubeconfig]
@@ -151,10 +151,10 @@ resource "local_file" "game_2048" {
 
 }
 resource "local_file" "root_application" {
-  content    = templatefile("${path.module}/../../../../../../root-application.yaml.tftpl", {
+  content = templatefile("${path.module}/../../../../../../root-application.yaml.tftpl", {
     "repo_owner" : var.repo_owner,
     "repo_name" : var.repo_name
-    "targetRevision": local.gitops_branch
+    "targetRevision" : local.gitops_branch
   })
   filename   = "${path.module}/../../../../../../root-application.yaml"
   depends_on = [null_resource.kubeconfig]
@@ -172,14 +172,14 @@ resource "null_resource" "push_changes" {
 
       branch=${local.gitops_branch}
       existed_in_local=$(git branch --list $branch)
-      user_repo=$(git remote -v | awk -F ":" 'NR==1{print $2}'  | awk -F ".git" '{print $1}')
+      repo_owner=${repo_owner}
       repo_root_dir=$(git rev-parse --show-toplevel) 
 
 
       git add $repo_root_dir/argo-projects   $repo_root_dir/root-application.yaml
       git commit -am "feat: new cluster - new yaml variables" 
       git push --set-upstream origin $branch           
-      kubectl apply -f https://raw.githubusercontent.com/$user_repo/$branch/root-application.yaml;
+      kubectl apply -f https://raw.githubusercontent.com/$repo_owner/$branch/root-application.yaml;
 
       git checkout main
 SCRIPT
