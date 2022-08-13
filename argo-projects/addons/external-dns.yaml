@@ -1,0 +1,75 @@
+# https://github.com/kubernetes-sigs/external-dns/tree/master/charts/external-dns
+# https://aws.amazon.com/premiumsupport/knowledge-center/eks-set-up-externaldns/
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: external-dns
+  namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-wave: "1"
+spec:
+  project: default
+  source:
+    chart: external-dns
+    repoURL: https://kubernetes-sigs.github.io/external-dns/
+    targetRevision: 1.10.1
+    helm:
+      releaseName: external-dns
+      parameters:
+        - name: "serviceAccount.create"
+          value: "true"
+        - name: 'serviceAccount.annotations.eks\.amazonaws\.com/role-arn'
+          value: "arn:aws:iam::249446252531:role/magz8s_dev_aws_external_dns_controller"
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: external-dns
+  syncPolicy:
+    automated:
+      # not default.
+      # prune: false
+      # not default
+      allowEmpty: true
+      # not default. enable automatic sync when the live cluster's state deviates from the state defined in Git. Default interval 5 secs.
+      # selfHeal: false
+
+    syncOptions:
+      # - ApplyOutOfSyncOnly=true
+      - CreateNamespace=true
+      - RespectIgnoreDifferences=true
+  # https://github.com/argoproj/argo-cd/issues/4276#issuecomment-742165994
+  ignoreDifferences:
+    # - group: secrets
+    #   kind: Secret
+    # - group: '*'
+    #   kind: '*'
+      # name: aws-load-balancer-tls
+      # namespace: external-dns
+      # jqPathExpressions:
+      #   - .data
+      # Group is on the very right of `kubectl api-resources | grep -i webhook`
+    # - kind: MutatingWebhookConfiguration
+    #   group: admissionregistration.k8s.io
+    #   jsonPointers:
+    #     - /webhooks/0/clientConfig/caBundle
+    #     - /webhooks/1/clientConfig/caBundle
+    #     - /webhooks/2/clientConfig/caBundle
+    #     - /webhooks/3/clientConfig/caBundle
+    #     - /webhooks/4/clientConfig/caBundle
+    #     - /webhooks/5/clientConfig/caBundle
+    #     - /webhooks/6/clientConfig/caBundle
+    #     - /webhooks/7/clientConfig/caBundle
+      # jqPathExpressions:
+      #   - .webhooks
+    # - group: admissionregistration.k8s.io
+    #   kind: MutatingWebhookConfiguration
+    #   jqPathExpressions:
+    #   - .webhooks[]?.clientConfig.caBundle
+    # - group: admissionregistration.k8s.io
+    #   kind: ValidatingWebhookConfiguration
+    #   jqPathExpressions:
+    #   - .webhooks[]?.clientConfig.caBundle
+    # - kind: Secret
+    #   name: aws-load-balancer-tls
+    #   jqPathExpressions:
+    #   - .data
