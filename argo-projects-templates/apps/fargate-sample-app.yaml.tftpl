@@ -2,7 +2,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: game-2048
+  name: fargate-sample-app
   namespace: argocd
   annotations:
     argocd.argoproj.io/sync-wave: "2"
@@ -12,9 +12,9 @@ spec:
     namespace: default
   project: default
   source:
-    repoURL: https://github.com/magzim21/magz8s.git
+    repoURL: https://github.com/${repo_owner}/${repo_name}.git
     targetRevision: HEAD
-    path: eks-apps/game-2048/
+    path: eks-apps/fargate-sample-app/
   syncPolicy:
     automated:
       allowEmpty: true
