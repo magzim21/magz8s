@@ -20,6 +20,7 @@ resource "null_resource" "kubeconfig" {
   # triggers = {
   #   always_run = "${timestamp()}"
   # }
+  # Todo: rewrite this to a python script
   provisioner "local-exec" {
     when = create
 
@@ -27,7 +28,6 @@ resource "null_resource" "kubeconfig" {
       branch=${local.gitops_branch}
       existed_in_local=$(git branch --list $branch)
       repo_owner=${var.repo_owner}
-      repo_root_dir=$(git rev-parse --show-toplevel) 
 
       if [[ ! -z $existed_in_local ]]; then
           echo Branch $branch already exists
@@ -167,19 +167,20 @@ resource "null_resource" "push_changes" {
   }
   provisioner "local-exec" {
     when = create
-    # Todo: move git commnds to the 
+    # Todo: rewrite this to a python script
     command = <<SCRIPT
       set -euo pipefail
-      
+
       branch=${local.gitops_branch}
       repo_owner=${var.repo_owner}
+      repo_name=$(basename $(git rev-parse --show-toplevel))
       repo_root_dir=$(git rev-parse --show-toplevel) 
 
 
       git add $repo_root_dir/argo-projects   $repo_root_dir/root-application.yaml
       git commit -am "feat: new cluster - new yaml variables" 
       git push --set-upstream origin $branch            
-      kubectl apply -f https://raw.githubusercontent.com/$repo_owner/$branch/root-application.yaml;
+      kubectl apply -f https://raw.githubusercontent.com/$repo_owner/$repo_name/$branch/root-application.yaml;
 
       git checkout main
 SCRIPT
