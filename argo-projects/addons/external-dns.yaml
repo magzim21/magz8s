@@ -20,7 +20,7 @@ spec:
         - name: "serviceAccount.create"
           value: "true"
         - name: 'serviceAccount.annotations.eks\.amazonaws\.com/role-arn'
-          value: "arn:aws:iam::249446252531:role/magz8s_prod_aws_external_dns_controller"
+          value: "arn:aws:iam::249446252531:role/magz8s_dev_aws_external_dns_controller"
   destination:
     server: https://kubernetes.default.svc
     namespace: external-dns

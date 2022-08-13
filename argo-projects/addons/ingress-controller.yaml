@@ -17,14 +17,14 @@ spec:
       parameters:
         # todo de-hardcode
         - name: "clusterName"
-          value: "magz8s-prod"
+          value: "magz8s-dev"
         - name: "serviceAccount.create"
           value: "true"
         # - name: "serviceAccount.name"
         #   value: "aws-load-balancer-controller"
           # TODO: de-hardcode magz8s_stage_aws_load_balancer_controller
         - name: 'serviceAccount.annotations.eks\.amazonaws\.com/role-arn'
-          value: "arn:aws:iam::249446252531:role/magz8s_prod_aws_load_balancer_controller"
+          value: "arn:aws:iam::249446252531:role/magz8s_dev_aws_load_balancer_controller"
         # - name: 'region'
         #   value: 'ca-central-1'
         # - name: 'vpcId:'
