@@ -26,7 +26,7 @@ resource "null_resource" "kubeconfig" {
     command = <<SCRIPT
       branch=${local.gitops_branch}
       existed_in_local=$(git branch --list $branch)
-      repo_owner=${repo_owner}
+      repo_owner=${var.repo_owner}
       repo_root_dir=$(git rev-parse --show-toplevel) 
 
       if [[ ! -z $existed_in_local ]]; then
@@ -172,7 +172,7 @@ resource "null_resource" "push_changes" {
 
       branch=${local.gitops_branch}
       existed_in_local=$(git branch --list $branch)
-      repo_owner=${repo_owner}
+      repo_owner=${var.repo_owner}
       repo_root_dir=$(git rev-parse --show-toplevel) 
 
 
