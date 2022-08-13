@@ -186,6 +186,7 @@ resource "null_resource" "push_changes" {
       git add $repo_root_dir/argo-projects   $repo_root_dir/root-application.yaml
       git commit -am "feat: new cluster - new yaml variables" 
       git push --set-upstream origin $branch -f 
+
       kubectl apply -f https://raw.githubusercontent.com/$repo_owner/$repo_name/$branch/root-application.yaml 
 
       git checkout main
@@ -195,6 +196,6 @@ SCRIPT
     }
     interpreter = ["/bin/bash", "-c"]
   }
-  depends_on = [local_file.root_application, null_resource.sleep_eks]
+  depends_on = [local_file.root_application, null_resource.sleep_eks, null_resource.kubeconfig]
 }
 
