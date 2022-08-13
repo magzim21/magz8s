@@ -31,7 +31,7 @@ spec:
       # not values file stored not relative to this file, but to the repo above.
       valueFiles:
         - small.yaml
-        - https://raw.githubusercontent.com/${repo_owner}/${repo_name}/gitops/argo-projects/monitoring/values/grafana-mimir-custom.yaml
+        - https://raw.githubusercontent.com/${repo_owner}/${repo_name}/${gitops_branch}/argo-projects/monitoring/values/grafana-mimir-custom.yaml
       parameters:
         - name: 'serviceAccount.annotations.eks\.amazonaws\.com/role-arn'
           value: ${role-arn}
