@@ -3,7 +3,9 @@ before("apply",
 )
 
 after("apply",
-  execute: "echo 'app/stacks/main/config/hooks/terraform.rb: test stack after hook for terraform apply'"
+  execute: "echo 'app/stacks/main/config/hooks/terraform.rb: test stack after hook for terraform apply'
+  KUBECONFIG=\"./$(ls kubeconfig*)\" kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath=\"{.data.password}\" | base64 -d
+  "
 )
 
 SCRIPT = <<~EOS
