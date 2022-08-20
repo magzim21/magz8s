@@ -38,6 +38,7 @@ resource "null_resource" "kubeconfig" {
           git reset --hard main
       else
           git checkout -b $branch
+          git reset --hard main
       fi
 
       aws eks --region ${data.aws_region.current.id} update-kubeconfig --name ${local.eks_cluser_name} 	--kubeconfig ${local.kubeconfig_path};
