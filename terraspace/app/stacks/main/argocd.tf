@@ -33,8 +33,8 @@ resource "null_resource" "kubeconfig" {
 
       if [[ ! -z $existed_in_local ]]; then
           echo Branch $branch already exists
-          git checkout $branch 
           git stash
+          git checkout $branch 
           git reset --hard main
       else
           git checkout -b $branch
