@@ -15,6 +15,8 @@ resource "null_resource" "sleep_eks" {
 
 
 
+
+
 resource "null_resource" "kubeconfig" {
   # todo: maybe remove this trigger and simplify script.
   # triggers = {
@@ -113,8 +115,7 @@ resource "local_file" "grafana_mimir_custom" {
     "s3_bucket_admin" : aws_s3_bucket.metrics_admin.id,
     "s3_bucket_ruler" : aws_s3_bucket.metrics_ruler.id,
     "s3_bucket_tsdb" : aws_s3_bucket.metrics_tsdb.id,
-    "region" : data.aws_region.current.id,
-    "gitops_branch" : local.gitops_branch
+    "region" : data.aws_region.current.id
   })
   filename   = "${path.module}/../../../../../../argo-projects/monitoring/values/grafana-mimir-custom.yaml"
   depends_on = [null_resource.kubeconfig]
