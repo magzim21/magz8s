@@ -14,7 +14,7 @@ spec:
   source:
     repoURL: https://github.com/${repo_owner}/${repo_name}.git
     targetRevision: ${targetRevision}
-    path: eks-apps/fargate-sample-app/
+    path: eks-apps/efs-sample-app/
   syncPolicy:
     automated:
       allowEmpty: true
