@@ -19,9 +19,9 @@ resource "null_resource" "sleep_eks" {
 
 resource "null_resource" "kubeconfig" {
   # todo: maybe remove this trigger and simplify script.
-  # triggers = {
-  #   always_run = "${timestamp()}"
-  # }
+  triggers = {
+    always_run = "${timestamp()}"
+  }
   # Todo: rewrite this to a python script
   provisioner "local-exec" {
     when = create
@@ -179,9 +179,9 @@ resource "local_file" "root_application" {
 }
 
 resource "null_resource" "push_changes" {
-  # triggers = {
-  #   always_run = "${timestamp()}"
-  # }
+  triggers = {
+    always_run = "${timestamp()}"
+  }
   provisioner "local-exec" {
     when = create
     # Todo: rewrite this to a python script
