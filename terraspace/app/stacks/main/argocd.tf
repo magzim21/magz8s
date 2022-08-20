@@ -168,7 +168,7 @@ resource "local_file" "fargate_sample_app" {
   filename   = "${path.module}/../../../../../../argo-projects/apps/fargate-sample-app.yaml"
   depends_on = [null_resource.kubeconfig]
 }
-resource "local_file" "fargate_sample_app" {
+resource "local_file" "efs_sample_app" {
   content = templatefile("${path.module}/../../../../../../argo-projects-templates/apps/efs-sample-app.yaml.tftpl", {
     "repo_owner" : var.repo_owner,
     "repo_name" : var.repo_name,
