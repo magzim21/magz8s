@@ -1,4 +1,4 @@
-# helm install autoscaler autoscaler/cluster-autoscaler --set autoDiscovery.clusterName=eksdemo1 --set awsRegion=ca-central-1 --set cloudProvider=aws --version 9.10.7
+# https://docs.aws.amazon.com/eks/latest/userguide/efs-csi.html
 ---
 apiVersion: argoproj.io/v1alpha1
 kind: Application
