@@ -92,7 +92,7 @@ resource "local_file" "aws_efs_csi_driver" {
   depends_on = [null_resource.kubeconfig, module.efs]
 }
 resource "local_file" "aws_efs_csi_driver_values" {
-  content = templatefile("${path.module}/../../../../../../argo-projects-templates/monitoring/values/grafana-mimir-custom.yaml.tftpl", {
+  content = templatefile("${path.module}/../../../../../../argo-projects-templates/addons/values/aws-efs-csi-driver-values.yaml.tftpl", {
     efs_id : module.efs.id
   })
   filename   = "${path.module}/../../../../../../argo-projects/monitoring/values/grafana-mimir-custom.yaml"
