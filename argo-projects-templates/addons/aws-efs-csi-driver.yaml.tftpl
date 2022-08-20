@@ -22,9 +22,8 @@ spec:
           value: "true"
         - name: "controller.serviceAccount.annotations.eks\\.amazonaws\\.com/role-arn"
           value: "${role-arn}" # module.iam_assumable_role_efs.this_iam_role_arn
-        - name: "storageClasses"
-          value: '{"name":"efs-sc","parameters":{"provisioningMode":"efs-ap","fileSystemId":"${efs_id}","directoryPerms":"700","gidRangeStart":"1000","gidRangeEnd":"2000"},"volumeBindingMode":"Immediate"}'
-        
+      valueFiles:
+      - https://raw.githubusercontent.com/${repo_owner}/${repo_name}/${targetRevision}/argo-projects/addons/values/aws-efs-csi-driver-values.yaml
 
 
 

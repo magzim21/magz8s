@@ -1,0 +1,9 @@
+storageClasses:
+  - name: efs-sc
+    parameters:
+    provisioningMode: efs-ap
+    fileSystemId: '${efs_id}'
+    directoryPerms: '700'
+    gidRangeStart: '1000'
+    gidRangeEnd: '2000'
+    volumeBindingMode: Immediate

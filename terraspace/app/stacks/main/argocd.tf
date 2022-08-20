@@ -82,11 +82,20 @@ resource "local_file" "cluster_autoscaler" {
 }
 resource "local_file" "aws_efs_csi_driver" {
   content = templatefile("${path.module}/../../../../../../argo-projects-templates/addons/aws-efs-csi-driver.yaml.tftpl", {
-    aws_image_registry = local.aws_image_registry
-    efs_id             = module.efs.id
-    role-arn           = aws_iam_role.efs.arn
+    "aws_image_registry" : local.aws_image_registry,
+    "role-arn" : aws_iam_role.efs.arn,
+    "repo_owner" : var.repo_owner,
+    "repo_name" : var.repo_name,
+    "targetRevision" : local.gitops_branch
   })
   filename   = "${path.module}/../../../../../../argo-projects/addons/aws-efs-csi-driver.yaml"
+  depends_on = [null_resource.kubeconfig, module.efs]
+}
+resource "local_file" "aws_efs_csi_driver_values" {
+  content = templatefile("${path.module}/../../../../../../argo-projects-templates/monitoring/values/grafana-mimir-custom.yaml.tftpl", {
+    efs_id : module.efs.id
+  })
+  filename   = "${path.module}/../../../../../../argo-projects/monitoring/values/grafana-mimir-custom.yaml"
   depends_on = [null_resource.kubeconfig, module.efs]
 }
 resource "local_file" "ingress_controller" {
