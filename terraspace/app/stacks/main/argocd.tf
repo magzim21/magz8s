@@ -170,9 +170,9 @@ resource "local_file" "root_application" {
 }
 
 resource "null_resource" "push_changes" {
-  triggers = {
-    always_run = "${timestamp()}"
-  }
+  # triggers = {
+  #   always_run = "${timestamp()}"
+  # }
   provisioner "local-exec" {
     when = create
     # Todo: rewrite this to a python script
@@ -191,7 +191,7 @@ resource "null_resource" "push_changes" {
 
       kubectl apply -f https://raw.githubusercontent.com/$repo_owner/$repo_name/$branch/root-application.yaml 
 
-      git checkout main
+      git checkout main 
 SCRIPT
     environment = {
       "KUBECONFIG" : "${local.kubeconfig_path}"
