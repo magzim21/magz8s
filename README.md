@@ -1,3 +1,8 @@
+Known problems:
+-  Prometheus argo app fails to sync initially. Steps to fix:
+    1. Sync without "REPLACE" option.
+    2. Sync with "REPLACE" option + "out of sync" only.
+
 # Repo template
 This is a repo template 👨🏼‍🔬  
 This README is a template for furure repos ➕ recommendations.  
