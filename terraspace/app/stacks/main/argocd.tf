@@ -159,6 +159,15 @@ resource "local_file" "game_2048" {
   filename   = "${path.module}/../../../../../../argo-projects/apps/game-2048.yaml"
   depends_on = [null_resource.kubeconfig]
 }
+resource "local_file" "promlens" {
+  content = templatefile("${path.module}/../../../../../../argo-projects-templates/apps/promlens.yaml.tftpl", {
+    "repo_owner" : var.repo_owner,
+    "repo_name" : var.repo_name,
+    "targetRevision" : local.gitops_branch
+  })
+  filename   = "${path.module}/../../../../../../argo-projects/apps/promlens.yaml"
+  depends_on = [null_resource.kubeconfig]
+}
 resource "local_file" "fargate_sample_app" {
   content = templatefile("${path.module}/../../../../../../argo-projects-templates/apps/fargate-sample-app.yaml.tftpl", {
     "repo_owner" : var.repo_owner,
