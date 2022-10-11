@@ -13,7 +13,7 @@ spec:
   project: default
   source:
     repoURL: https://github.com/magzim21/magz8s.git
-    targetRevision: HEAD
+    targetRevision: gitops-magz8s-dev
     path: eks-apps/fargate-sample-app/
   syncPolicy:
     automated:

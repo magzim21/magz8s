@@ -1,4 +1,4 @@
-# https://docs.aws.amazon.com/eks/latest/userguide/efs-csi.html
+# helm install autoscaler autoscaler/cluster-autoscaler --set autoDiscovery.clusterName=eksdemo1 --set awsRegion=ca-central-1 --set cloudProvider=aws --version 9.10.7
 ---
 apiVersion: argoproj.io/v1alpha1
 kind: Application
@@ -22,9 +22,8 @@ spec:
           value: "true"
         - name: "controller.serviceAccount.annotations.eks\\.amazonaws\\.com/role-arn"
           value: "arn:aws:iam::249446252531:role/magz8s-dev_efs" # module.iam_assumable_role_efs.this_iam_role_arn
-        - name: "storageClasses"
-          value: '{"name":"efs-sc","parameters":{"provisioningMode":"efs-ap","fileSystemId":"fs-0d90c3ffca098e2d5","directoryPerms":"700","gidRangeStart":"1000","gidRangeEnd":"2000"},"volumeBindingMode":"Immediate"}'
-        
+      valueFiles:
+      - https://raw.githubusercontent.com/magzim21/magz8s/gitops-magz8s-dev/argo-projects/addons/values/aws-efs-csi-driver-values.yaml
 
 
 

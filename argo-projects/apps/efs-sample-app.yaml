@@ -2,7 +2,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: game-2048
+  name: efs-sample-app
   namespace: argocd
   annotations:
     argocd.argoproj.io/sync-wave: "2"
@@ -14,7 +14,7 @@ spec:
   source:
     repoURL: https://github.com/magzim21/magz8s.git
     targetRevision: gitops-magz8s-dev
-    path: eks-apps/game-2048/
+    path: eks-apps/efs-sample-app/
   syncPolicy:
     automated:
       allowEmpty: true

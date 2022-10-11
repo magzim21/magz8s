@@ -1,9 +1,13 @@
-storageClasses:
+storageClasses: 
   - name: efs-sc
+    mountOptions:
+    - tls
     parameters:
       provisioningMode: efs-ap
-      fileSystemId: 'fs-0d90c3ffca098e2d5'
-      directoryPerms: '700'
-      gidRangeStart: '1000'
-      gidRangeEnd: '2000'
-      volumeBindingMode: Immediate
+      fileSystemId: 'fs-02519ec0218a1066e'
+      directoryPerms: "700"
+      gidRangeStart: "1000"
+      gidRangeEnd: "2000"
+      basePath: "/dynamic_provisioning"
+    reclaimPolicy: Delete
+    volumeBindingMode: Immediate
